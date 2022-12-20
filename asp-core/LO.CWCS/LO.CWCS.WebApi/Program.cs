@@ -1,3 +1,6 @@
+using LO.CWCS.EFCore;
+using Microsoft.EntityFrameworkCore;
+
 namespace LO.CWCS.WebApi
 {
     public class Program
@@ -12,6 +15,9 @@ namespace LO.CWCS.WebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<CarWashDbContext>(options =>
+               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 

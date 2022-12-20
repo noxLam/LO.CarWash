@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LO.CWCS.Utils.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,9 @@ namespace LO.CWCS.Entities
     public class Card
     {
         public int Id { get; set; }
+        public DateTime ActionDate { get; set; }
         public double TotalPrice { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
