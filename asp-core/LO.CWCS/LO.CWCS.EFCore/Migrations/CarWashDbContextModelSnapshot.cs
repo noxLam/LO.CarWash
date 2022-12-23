@@ -34,7 +34,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasIndex("CustomersId");
 
-                    b.ToTable("CarCustomer");
+                    b.ToTable("CarCustomer", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Car", b =>
@@ -59,7 +59,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Cars", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Card", b =>
@@ -101,7 +101,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasIndex("WashId");
 
-                    b.ToTable("Cards");
+                    b.ToTable("Cards", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Customer", b =>
@@ -126,7 +126,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Employee", b =>
@@ -147,7 +147,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Wash", b =>
@@ -169,7 +169,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Washes");
+                    b.ToTable("Washes", (string)null);
                 });
 
             modelBuilder.Entity("CarCustomer", b =>
