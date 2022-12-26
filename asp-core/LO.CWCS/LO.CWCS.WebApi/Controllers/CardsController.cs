@@ -72,6 +72,8 @@ namespace LO.CWCS.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Card>> CreateCard(Card card)
         {
+            card.ActionDate= DateTime.Now;
+
             _context.Cards.Add(card);
             await _context.SaveChangesAsync();
 

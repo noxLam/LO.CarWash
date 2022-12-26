@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LO.CWCS.Entities", "LO.CWCS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LO.CWCS.Utils", "LO.CWCS.Utils\LO.CWCS.Utils.csproj", "{355A6140-8D98-4E9E-B899-6774C4053D69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LO.CWCS.EFCore", "LO.CWCS.EFCore\LO.CWCS.EFCore.csproj", "{C5C5CB68-F02E-4D3F-93E9-8314704C34D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LO.CWCS.EFCore", "LO.CWCS.EFCore\LO.CWCS.EFCore.csproj", "{C5C5CB68-F02E-4D3F-93E9-8314704C34D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LO.CWCS.Dtos", "LO.CWCS.Dtos\LO.CWCS.Dtos.csproj", "{4C0429C4-1939-4DCF-A01D-0C0F87C2A5C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C5C5CB68-F02E-4D3F-93E9-8314704C34D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5C5CB68-F02E-4D3F-93E9-8314704C34D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5C5CB68-F02E-4D3F-93E9-8314704C34D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C0429C4-1939-4DCF-A01D-0C0F87C2A5C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C0429C4-1939-4DCF-A01D-0C0F87C2A5C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C0429C4-1939-4DCF-A01D-0C0F87C2A5C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C0429C4-1939-4DCF-A01D-0C0F87C2A5C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

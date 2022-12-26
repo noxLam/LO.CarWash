@@ -1,0 +1,18 @@
+﻿using LO.CWCS.Utils.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LO.CWCS.Dtos.Cards
+{
+    public class CardsListDto
+    {
+        public int Id { get; set; }
+        public DateTime ActionDate { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
+        public string CarPlateNumber { get; set; }
+        public string WashWashService { get; set; }
+    }
+}
