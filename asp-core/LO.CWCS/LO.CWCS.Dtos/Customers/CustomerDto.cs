@@ -11,7 +11,7 @@ namespace LO.CWCS.Dtos.Customers
     {
         public CustomerDto()
         {
-            Cars = new List<CarDto>;
+            Cars = new List<CarDto>();
         }
         public int Id { get; set; }
         public string FirstName { get; set; }

@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace LO.CWCS.Dtos.Cars
 {
-    public class CarsListDto
+    public class CarListDto
     {
-        public CarsListDto()
+        public CarListDto()
         {
-            Customers = new List<CustomersListDto>();
+            Customers = new List<CustomerListDto>();
         }
         public int Id { get; set; }
-        public string Make { get; set; }
         public string Model { get; set; }
         public string PlateNumber { get; set; }
-        public List<CustomersListDto> Customers { get; set; }
+        public List<CustomerListDto> Customers { get; set; }
     }
 }

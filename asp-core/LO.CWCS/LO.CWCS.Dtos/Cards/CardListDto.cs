@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LO.CWCS.Dtos.Cards
 {
-    public class CardsListDto
+    public class CardListDto
     {
         public int Id { get; set; }
         public DateTime ActionDate { get; set; }

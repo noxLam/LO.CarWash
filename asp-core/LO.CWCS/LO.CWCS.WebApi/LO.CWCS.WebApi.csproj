@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LO.CWCS.Dtos\LO.CWCS.Dtos.csproj" />
     <ProjectReference Include="..\LO.CWCS.EFCore\LO.CWCS.EFCore.csproj" />
   </ItemGroup>
 

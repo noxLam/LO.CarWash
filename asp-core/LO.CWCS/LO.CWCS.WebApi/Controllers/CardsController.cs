@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using LO.CWCS.EFCore;
 using LO.CWCS.Entities;
+using AutoMapper;
+using LO.CWCS.Dtos.Cards;
 
 namespace LO.CWCS.WebApi.Controllers
 {
@@ -11,18 +13,22 @@ namespace LO.CWCS.WebApi.Controllers
     {
         #region Data and Const
         private readonly CarWashDbContext _context;
+        private readonly IMapper _mapper;
 
-        public CardsController(CarWashDbContext context)
+        public CardsController(CarWashDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         #endregion
 
         #region Services
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Card>>> GetCards()
+        public async Task<ActionResult<IEnumerable<CardListDto>>> GetCards()
         {
-            return await _context.Cards.ToListAsync();
+            var cards = await _context.Cards.ToListAsync();
+            var cardDtos = _mapper.Map<List<CardListDto>>(cards);
+            return cardDtos;
         }
 
         [HttpGet("{id}")]

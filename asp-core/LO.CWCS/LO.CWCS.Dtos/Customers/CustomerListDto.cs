@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LO.CWCS.Dtos.Customers
 {
-    public class CustomersListDto
+    public class CustomerListDto
     {
         public int Id { get; set; }
         public string FullName { get; set; }
