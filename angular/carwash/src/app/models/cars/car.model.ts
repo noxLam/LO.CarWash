@@ -1,9 +1,9 @@
-import { Customer } from "./customers/customer.model";
+import { Customer } from "../customers/customer.model";
 
 export interface Car {
     id: number;
     make: string;
     model: string;
     plateNumber: string;
-    customers: Customer[];
+    customerIds: number[];
 }
