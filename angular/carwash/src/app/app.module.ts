@@ -9,13 +9,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarComponent } from './car/car.component';
+import { AddEditCustomerComponent } from './customer/add-edit-customer/add-edit-customer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
     HomeComponent,
-    CarComponent
+    CarComponent,
+    AddEditCustomerComponent
   ],
   imports: [
     BrowserModule,

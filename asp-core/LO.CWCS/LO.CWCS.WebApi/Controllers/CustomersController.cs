@@ -76,13 +76,19 @@ namespace LO.CWCS.WebApi.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> CreateCustomer(Customer customer)
+        public async Task<ActionResult<Customer>> CreateCustomer(CustomerDto customerDto)
         {
+            var customer = _mapper.Map<Customer>(customerDto);
+            await AddCarsToCustomer(customerDto.CarIds, customer);
+
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
+            customerDto.Id = customer.Id;
+
+            return CreatedAtAction("GetCustomer", new { id = customer.Id }, customerDto);
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
@@ -104,7 +110,17 @@ namespace LO.CWCS.WebApi.Controllers
         private bool CustomerExists(int id)
         {
             return _context.Customers.Any(e => e.Id == id);
-        } 
+        }
+        
+        private async Task AddCarsToCustomer(List<int> carIds, Customer customer)
+        {
+            var cars = await _context.Cars.Where(c => carIds.Contains(c.Id)).ToListAsync();
+            if(cars.Any())
+            {
+                customer.Cars.AddRange(cars);
+            }
+        }
+
         #endregion
     }
 }
