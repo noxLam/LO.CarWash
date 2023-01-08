@@ -1,6 +1,9 @@
 <h2>Customers</h2>
 <hr>
 
+<button class="mb-4" mat-raised-button color="primary" [routerLink]="['/customers/create']">Add a new customer</button>
+
+<div class="position-relative">
 <table class="table">
     <thead>
         <tr>
@@ -14,6 +17,12 @@
             <td>{{ customer.id }}</td>
             <td>{{ customer.fullName }}</td>
             <td>{{ customer.phoneNumber }}</td>
+            <td>
+                <a [routerLink]="['/customers/edit', customer.id]">
+                    <mat-icon>build</mat-icon>
+                </a>
+            </td>
         </tr>
     </tbody>
 </table>
+</div>

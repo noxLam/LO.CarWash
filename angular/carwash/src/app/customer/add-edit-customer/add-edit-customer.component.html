@@ -1,1 +1,59 @@
-<p>add-edit-customer works!</p>
+<h1>
+    <span *ngIf="pageMode == pageModeEnum.Create">Add Customer</span>
+    <span *ngIf="pageMode == pageModeEnum.Edit">
+        <span>Edit Customer</span>
+        <span class="text-primary">{{ customer?.firstName }}</span>
+    </span>
+</h1>
+<hr>
+
+<form [formGroup]="customerForm" (ngSubmit)="submitForm()">
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="">
+                <mat-form-field appearance="outline">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstName" required>
+                  <mat-error>First Name Is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="">
+                <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastName" required>
+                  <mat-error>Last Name Is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="">
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput formControlName="phoneNumber" required>
+                  <mat-error>Phone Number Is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="">
+                <mat-form-field appearance="fill">
+                 <mat-label>Cars</mat-label>
+                  <mat-select formControlName="carIds" multiple>
+                   <mat-option *ngFor="let car of carsLookup" [value]="car.value">{{ car.text }}</mat-option>
+                 </mat-select>
+                </mat-form-field>
+
+            </div>
+              
+        </div>
+    </div>
+
+    <div>
+        <button [routerLink]="['/customers']" mat-stroked-button>Cancel</button>
+        <button mat-raised-button color="warn" type="submit">
+            <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
+            <span *ngIf="pageMode == pageModeEnum.Edit">Edit</span>
+        </button>
+    </div>
+
+</form>

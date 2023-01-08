@@ -10,6 +10,7 @@ const routes: Routes = [
 
   {path:"customers", component: CustomerComponent},
   {path:"customers/create", component: AddEditCustomerComponent},
+  {path:"customers/edit/:id", component: AddEditCustomerComponent},
 
 
   {path:"cars", component: CarComponent}

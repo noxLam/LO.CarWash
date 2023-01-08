@@ -4,6 +4,7 @@ using LO.CWCS.EFCore;
 using LO.CWCS.Entities;
 using AutoMapper;
 using LO.CWCS.Dtos.Cars;
+using LO.CWCS.Dtos.Lookups;
 
 namespace LO.CWCS.WebApi.Controllers
 {
@@ -97,6 +98,23 @@ namespace LO.CWCS.WebApi.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+        #endregion
+
+        #region Lookups
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<LookupDto>>> GetLookup()
+        {
+            var carLookup = await _context
+                                    .Cars
+                                    .Select(car => new LookupDto()
+                                    {
+                                           Value = car.Id,
+                                           Text = car.PlateNumber
+                                    })
+                                    .ToListAsync();
+            return carLookup;
+            
         }
         #endregion
 

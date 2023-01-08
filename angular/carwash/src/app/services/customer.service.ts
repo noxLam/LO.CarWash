@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from '../models/customers/customer.model';
 import { CustomerList } from '../models/customers/customerList.model';
+import { Lookup } from '../models/lookup.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +26,19 @@ export class CustomerService {
     return this.http.post<Customer>(`${this.apiUrl}/CreateCustomer`,customer);
   }
 
+  getEditCustomer(id: number): Observable<Customer> {
+    return this.http.get<Customer>(`${this.apiUrl}/GetEditCustomer/${id}`);
+  }
+
   editCustomer(id: number, customer: Customer): Observable<any> {
     return this.http.put<Customer>(`${this.apiUrl}/EditCustomer/${id}`,customer);
   }
 
   deleteCustomer(id: number): Observable<any> {
     return this.http.delete<Customer>(`${this.apiUrl}/DeleteCustomer/${id}`)
+  }
+
+  getCustomerLookup(): Observable<Lookup[]> {
+    return this.http.get<Lookup[]>(`${this.apiUrl}/GetLookup`);
   }
 }
