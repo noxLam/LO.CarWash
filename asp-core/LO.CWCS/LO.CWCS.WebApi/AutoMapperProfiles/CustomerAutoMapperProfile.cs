@@ -9,7 +9,12 @@ namespace LO.CWCS.WebApi.AutoMapperProfiles
         public CustomerAutoMapperProfile()
         {
             CreateMap<Customer, CustomerListDto>();
-            CreateMap<Customer, CustomerDto>().ReverseMap();
+            CreateMap<CustomerDto, Customer>();
+
+
+            CreateMap<Customer, CustomerDto>()
+                .ForMember(dest => dest.CarIds, opts => opts.MapFrom(src => src.Cars.Select(c => c.Id)));
+
         }
     }
 }
