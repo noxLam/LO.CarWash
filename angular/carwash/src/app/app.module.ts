@@ -12,6 +12,7 @@ import { CarComponent } from './car/car.component';
 import { AddEditCustomerComponent } from './customer/add-edit-customer/add-edit-customer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedModule } from './shared/shared.module';
     CustomerComponent,
     HomeComponent,
     CarComponent,
-    AddEditCustomerComponent
+    AddEditCustomerComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ namespace LO.CWCS.WebApi.AutoMapperProfiles
         {
             CreateMap<Customer, CustomerListDto>();
             CreateMap<CustomerDto, Customer>();
+            CreateMap<Customer,CustomerDetailsDto>();
 
 
             CreateMap<Customer, CustomerDto>()

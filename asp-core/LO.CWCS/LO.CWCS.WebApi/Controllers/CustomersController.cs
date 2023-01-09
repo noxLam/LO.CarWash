@@ -33,16 +33,20 @@ namespace LO.CWCS.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int id)
+        public async Task<ActionResult<CustomerDetailsDto>> GetCustomer(int id)
         {
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _context.Customers
+                                             .Include(c => c.Cars)
+                                             .SingleOrDefaultAsync(c => c.Id == id);
 
             if (customer == null)
             {
                 return NotFound();
             }
 
-            return customer;
+            var cutomerDto = _mapper.Map<CustomerDetailsDto>(customer);
+
+            return cutomerDto;
         }
 
         [HttpGet("{id}")]

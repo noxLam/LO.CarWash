@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from '../models/customers/customer.model';
+import { CustomerDetails } from '../models/customers/customerDetails.model';
 import { CustomerList } from '../models/customers/customerList.model';
 import { Lookup } from '../models/lookup.model';
 
@@ -18,8 +19,8 @@ export class CustomerService {
     return this.http.get<CustomerList[]>(`${this.apiUrl}/GetCustomers`);
   }
 
-  getCustomer(id: number): Observable<Customer> {
-    return this.http.get<Customer>(`${this.apiUrl}/GetCustomer/${id}`);
+  getCustomer(id: number): Observable<CustomerDetails> {
+    return this.http.get<CustomerDetails>(`${this.apiUrl}/GetCustomer/${id}`);
   }
 
   createCustomer(customer: Customer): Observable<Customer> {
