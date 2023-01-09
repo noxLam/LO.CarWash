@@ -13,6 +13,7 @@ import { AddEditCustomerComponent } from './customer/add-edit-customer/add-edit-
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CustomerDetailsComponent } from './customer/customer-details/customer-d
     HomeComponent,
     CarComponent,
     AddEditCustomerComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

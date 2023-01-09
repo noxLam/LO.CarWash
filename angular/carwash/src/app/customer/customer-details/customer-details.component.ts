@@ -39,8 +39,9 @@ export class CustomerDetailsComponent implements OnInit {
         },
         error: (e: HttpErrorResponse) => {
           console.log(e.message);
+          this.router.navigate(['/not-found']);
         }
-      })
+      });
     }
   }
 

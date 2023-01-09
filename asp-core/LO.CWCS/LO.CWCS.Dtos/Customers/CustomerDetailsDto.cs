@@ -11,13 +11,13 @@ namespace LO.CWCS.Dtos.Customers
     {
         public CustomerDetailsDto()
         {
-            Cars = new List<CarListDto>();
+            Cars = new List<CarDto>();
         }
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
 
-        public List<CarListDto> Cars { get; set; }
+        public List<CarDto> Cars { get; set; }
     }
 }
