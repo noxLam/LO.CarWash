@@ -12,7 +12,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class CustomerDetailsComponent implements OnInit {
 
   customerId!: number;
-  customer!: CustomerDetails;
+  customer?: CustomerDetails;
 
   constructor (
     private customerSvc: CustomerService,

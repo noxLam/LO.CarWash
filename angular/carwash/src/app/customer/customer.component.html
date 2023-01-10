@@ -18,15 +18,23 @@
             <td>{{ customer.fullName }}</td>
             <td>{{ customer.phoneNumber }}</td>
             <td class="pb-0 mb-0">
-                <a class="me-2" [routerLink]="['/customers/edit', customer.id]">
+                <a class="me-2 text-black" [routerLink]="['/customers/edit', customer.id]">
                     <mat-icon>build</mat-icon>
                 </a>
                 <a class="me-2" [routerLink]="['/customers/details', customer.id]">
                     <mat-icon>help</mat-icon>
                 </a>
-
+                <a class="pointer text-danger" (click)="deleteCustomer(customer.id, customer.fullName)">
+                    <mat-icon>clear</mat-icon>
+                </a>
             </td>
         </tr>
     </tbody>
 </table>
+
+<div *ngIf="showSpinner">
+    <mat-spinner></mat-spinner>
+</div>
+
+
 </div>

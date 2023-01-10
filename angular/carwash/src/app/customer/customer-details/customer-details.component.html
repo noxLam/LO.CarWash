@@ -1,17 +1,17 @@
-<h1><span class="text-primary">{{ customer.firstName }}</span> Details</h1>
+<h1><span class="text-primary">{{ customer?.firstName }}</span> Details</h1>
 <hr>
 
 <div class="row">
     <div class="col-md-3">First Name</div>
-    <div class="col-md-9">{{ customer.firstName }}</div>
+    <div class="col-md-9">{{ customer?.firstName }}</div>
 </div>
 <div class="row mt-3">
     <div class="col-md-3">Last Name</div>
-    <div class="col-md-9">{{ customer.lastName }}</div>
+    <div class="col-md-9">{{ customer?.lastName }}</div>
 </div>
 <div class="row mt-3">
     <div class="col-md-3">Phone Number</div>
-    <div class="col-md-9">{{ customer.phoneNumber }}</div>
+    <div class="col-md-9">{{ customer?.phoneNumber }}</div>
 </div>
 <div>
     <h3 class="mt-3">Customer Cars</h3>
@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let car of customer.cars">
+            <tr *ngFor="let car of customer?.cars">
                 <td>{{ car.make }}</td>
                 <td>{{ car.model }}</td>
                 <td>{{ car.plateNumber }}</td>

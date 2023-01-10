@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DeleteCustomerComponent } from './customer/dialogs/delete-customer/delete-customer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CarComponent,
     AddEditCustomerComponent,
     CustomerDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DeleteCustomerComponent
   ],
   imports: [
     BrowserModule,
