@@ -9,13 +9,9 @@ namespace LO.CWCS.Dtos.Cars
 {
     public class CarListDto
     {
-        public CarListDto()
-        {
-            Customers = new List<CustomerListDto>();
-        }
+        
         public int Id { get; set; }
         public string Model { get; set; }
         public string PlateNumber { get; set; }
-        public List<CustomerListDto> Customers { get; set; }
     }
 }

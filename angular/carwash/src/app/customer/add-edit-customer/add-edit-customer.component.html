@@ -1,8 +1,8 @@
 <h1>
     <span *ngIf="pageMode == pageModeEnum.Create">Add Customer</span>
     <span *ngIf="pageMode == pageModeEnum.Edit">
-        <span>Edit Customer</span>
-        <span class="text-primary">{{ customer?.firstName }}</span>
+        <span>Edit Customer </span>
+        <span class="text-primary"> {{ customer?.firstName }}</span>
     </span>
 </h1>
 <hr>
@@ -49,7 +49,7 @@
     </div>
 
     <div>
-        <button [routerLink]="['/customers']" mat-stroked-button>Cancel</button>
+        <button class="me-2" [routerLink]="['/customers']" mat-stroked-button>Cancel</button>
         <button mat-raised-button color="warn" type="submit">
             <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
             <span *ngIf="pageMode == pageModeEnum.Edit">Edit</span>

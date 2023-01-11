@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DeleteCustomerComponent } from './customer/dialogs/delete-customer/delete-customer.component';
+import { AddEditCarComponent } from './car/add-edit-car/add-edit-car.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DeleteCustomerComponent } from './customer/dialogs/delete-customer/dele
     AddEditCustomerComponent,
     CustomerDetailsComponent,
     NotFoundComponent,
-    DeleteCustomerComponent
+    DeleteCustomerComponent,
+    AddEditCarComponent
   ],
   imports: [
     BrowserModule,

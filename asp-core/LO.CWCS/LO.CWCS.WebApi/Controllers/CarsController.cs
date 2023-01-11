@@ -123,6 +123,11 @@ namespace LO.CWCS.WebApi.Controllers
         {
             return _context.Cars.Any(e => e.Id == id);
         } 
+
+        private bool CarPlateNumExists(string plateNum)
+        {
+            return _context.Cars.Any(c => c.PlateNumber == plateNum);
+        }
         #endregion
     }
 }

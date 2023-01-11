@@ -19,5 +19,12 @@ namespace LO.CWCS.EFCore
         : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Car>()
+                         .HasIndex(c => c.PlateNumber)
+                         .IsUnique();
+        }
     }
 }
