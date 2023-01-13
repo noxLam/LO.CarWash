@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using LO.CWCS.EFCore;
 using LO.CWCS.Entities;
+using AutoMapper;
+using LO.CWCS.Dtos.Employees;
 
 namespace LO.CWCS.WebApi.Controllers
 {
@@ -11,18 +13,24 @@ namespace LO.CWCS.WebApi.Controllers
     {
         #region Data And Const
         private readonly CarWashDbContext _context;
+        private readonly IMapper _mapper;
 
-        public EmployeesController(CarWashDbContext context)
+        public EmployeesController(CarWashDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         #endregion
 
         #region Services
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<ActionResult<IEnumerable<EmployeeListDto>>> GetEmployees()
         {
-            return await _context.Employees.ToListAsync();
+                var employees = await _context.Employees.ToListAsync();
+
+                var employeeDtos = _mapper.Map<List<EmployeeListDto>>(employees);
+
+            return employeeDtos;
         }
 
         [HttpGet("{id}")]
@@ -70,8 +78,10 @@ namespace LO.CWCS.WebApi.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Employee>> CreateEmployee(Employee employee)
+        public async Task<ActionResult<Employee>> CreateEmployee(EmployeeDto employeeDto)
         {
+            var employee = _mapper.Map<Employee>(employeeDto);
+
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
 
