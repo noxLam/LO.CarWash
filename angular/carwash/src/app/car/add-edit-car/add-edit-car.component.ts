@@ -56,6 +56,16 @@ export class AddEditCarComponent implements OnInit {
             alert(e.message);
           }
         });
+      }else {
+        this.carSvc.editCar(this.carId, this.carForm.value).subscribe({
+          next: () => {
+            this.router.navigate(['/cars']);
+          },
+          error: (e: HttpErrorResponse) => {
+            console.log(e);
+            alert(e.message);
+          }
+        });
       }
     }
   }

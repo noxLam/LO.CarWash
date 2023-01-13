@@ -1,0 +1,22 @@
+<h1>|<span class="text-primary">{{ car.plateNumber }}</span>| Details</h1>
+<hr>
+
+<div class="row">
+    <div class="col-md-3">Make</div>
+    <div class="col-md-9">{{ car.make }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">Model</div>
+    <div class="col-md-9">{{ car.model }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">plateNumber</div>
+    <div class="col-md-9">{{ car.plateNumber }}</div>
+</div>
+
+<hr class="mt-5">
+
+<div class="mt-5">
+    <button class="me-2" mat-raised-button color="primary" [routerLink]="['/cars/edit/', carId]">Edit</button>
+    <button mat-raised-button color="warn" [routerLink]="['/cars']">Cancel</button>
+</div>

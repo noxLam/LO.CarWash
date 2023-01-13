@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEditCarComponent } from './car/add-edit-car/add-edit-car.component';
+import { CarDetailsComponent } from './car/car-details/car-details.component';
 import { CarComponent } from './car/car.component';
 import { AddEditCustomerComponent } from './customer/add-edit-customer/add-edit-customer.component';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
@@ -20,8 +21,10 @@ const routes: Routes = [
   {path:"cars", component: CarComponent},
   {path:"cars/create", component: AddEditCarComponent},
   {path:"cars/edit/:id", component: AddEditCarComponent},
+  {path:"cars/details/:id", component: CarDetailsComponent},
 
-  {path: "not-found", component: NotFoundComponent}
+  {path: "not-found", component: NotFoundComponent},
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({

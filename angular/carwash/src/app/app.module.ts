@@ -16,6 +16,8 @@ import { CustomerDetailsComponent } from './customer/customer-details/customer-d
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DeleteCustomerComponent } from './customer/dialogs/delete-customer/delete-customer.component';
 import { AddEditCarComponent } from './car/add-edit-car/add-edit-car.component';
+import { DeleteCarComponent } from './car/dialogs/delete-car/delete-car.component';
+import { CarDetailsComponent } from './car/car-details/car-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AddEditCarComponent } from './car/add-edit-car/add-edit-car.component';
     CustomerDetailsComponent,
     NotFoundComponent,
     DeleteCustomerComponent,
-    AddEditCarComponent
+    AddEditCarComponent,
+    DeleteCarComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,
