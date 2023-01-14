@@ -1,1 +1,38 @@
-<p>employee works!</p>
+<h1>Employees</h1>
+
+<hr>
+
+<button class="mb-4" mat-raised-button color="primary" [routerLink]="['/employees/create']">Add a new customer</button>
+
+<div class="position-relative">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.fullName }}</td>
+            <td class="pb-0 mb-0">
+                <a class="me-2 text-black" [routerLink]="['/employees/edit', employee.id]">
+                    <mat-icon>build</mat-icon>
+                </a>
+                <a class="me-2" [routerLink]="['/employees/details', employee.id]">
+                    <mat-icon>help</mat-icon>
+                </a>
+                <!--<a class="pointer text-danger" (click)="deleteCustomer(employee.id, employee.fullName)">
+                    <mat-icon>clear</mat-icon>
+                </a>-->
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="spin-wrap" *ngIf="showSpinner">
+    <mat-spinner class="start-50 top-50 translate-middle position-absolute"></mat-spinner>
+</div>
+
+</div>

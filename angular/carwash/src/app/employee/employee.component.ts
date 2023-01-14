@@ -11,6 +11,7 @@ import { EmployeeService } from '../services/employee.service';
 export class EmployeeComponent implements OnInit{
 
   employees: EmployeeList[] = [];
+  showSpinner: boolean = true;
 
   constructor (
     private employeeSvc: EmployeeService,
@@ -27,9 +28,11 @@ export class EmployeeComponent implements OnInit{
     this.employeeSvc.getEmloyees().subscribe({
       next: (employeesFromApi) => {
         this.employees = employeesFromApi;
+        this.showSpinner = false;
       },
       error: (e: HttpErrorResponse) => {
         console.log(e);
+        alert(e.message);
       }
     });
   }

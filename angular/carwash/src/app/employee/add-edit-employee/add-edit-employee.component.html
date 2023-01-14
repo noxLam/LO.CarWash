@@ -1,0 +1,39 @@
+<h1>
+    <span *ngIf="pageMode == pageModeEnum.Create">Add an Employee</span>
+    <span *ngIf="pageMode == pageModeEnum.Edit">
+        <span>Edit Employee</span>
+        <span class="text-primary">{{ employee?.firstName }}</span>
+    </span>
+</h1>
+
+<hr>
+
+<form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="">
+                <mat-form-field appearance="outline">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstName" required>
+                  <mat-error>First Name Is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="">
+                <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastName" required>
+                  <mat-error>Last Name Is required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button class="me-2" [routerLink]="['/employees']" mat-stroked-button>Cancel</button>
+        <button mat-raised-button color="warn" type="submit">
+            <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
+            <span *ngIf="pageMode == pageModeEnum.Edit">Edit</span>
+        </button>
+    </div>
+</form>
