@@ -34,7 +34,7 @@ namespace LO.CWCS.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployee(int id)
+        public async Task<ActionResult<EmployeeDto>> GetEmployee(int id)
         {
             var employee = await _context.Employees.FindAsync(id);
 
@@ -43,7 +43,9 @@ namespace LO.CWCS.WebApi.Controllers
                 return NotFound();
             }
 
-            return employee;
+            var employeeDto = _mapper.Map<EmployeeDto>(employee);
+
+            return employeeDto;
         }
 
 

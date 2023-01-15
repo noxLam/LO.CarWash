@@ -7,6 +7,7 @@ import { AddEditCustomerComponent } from './customer/add-edit-customer/add-edit-
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AddEditEmployeeComponent } from './employee/add-edit-employee/add-edit-employee.component';
+import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:"employees", component: EmployeeComponent},
   {path:"employees/create", component: AddEditEmployeeComponent},
   {path:"employees/edit/:id", component: AddEditEmployeeComponent},
+  {path:"employees/details/:id", component: EmployeeDetailsComponent},
 
   {path: "not-found", component: NotFoundComponent},
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
