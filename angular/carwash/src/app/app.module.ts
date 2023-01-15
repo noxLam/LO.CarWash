@@ -20,6 +20,7 @@ import { DeleteCarComponent } from './car/dialogs/delete-car/delete-car.componen
 import { CarDetailsComponent } from './car/car-details/car-details.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AddEditEmployeeComponent } from './employee/add-edit-employee/add-edit-employee.component';
+import { DeleteEmployeeComponent } from './employee/dialogs/delete-employee/delete-employee.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AddEditEmployeeComponent } from './employee/add-edit-employee/add-edit-
     DeleteCarComponent,
     CarDetailsComponent,
     EmployeeComponent,
-    AddEditEmployeeComponent
+    AddEditEmployeeComponent,
+    DeleteEmployeeComponent
   ],
   imports: [
     BrowserModule,

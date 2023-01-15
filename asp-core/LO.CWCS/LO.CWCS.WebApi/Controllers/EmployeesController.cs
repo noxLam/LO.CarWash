@@ -48,12 +48,14 @@ namespace LO.CWCS.WebApi.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditEmployee(int id, Employee employee)
+        public async Task<IActionResult> EditEmployee(int id, EmployeeDto employeeDto)
         {
-            if (id != employee.Id)
+            if (id != employeeDto.Id)
             {
                 return BadRequest();
             }
+
+            var employee = _mapper.Map<Employee>(employeeDto);
 
             _context.Entry(employee).State = EntityState.Modified;
 
@@ -85,7 +87,7 @@ namespace LO.CWCS.WebApi.Controllers
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
+            return CreatedAtAction("GetEmployee", new { id = employeeDto.Id }, employeeDto);
         }
 
         [HttpDelete("{id}")]
