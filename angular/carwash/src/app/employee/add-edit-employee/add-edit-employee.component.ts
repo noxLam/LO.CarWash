@@ -74,8 +74,12 @@ export class AddEditEmployeeComponent implements OnInit{
   private buildForm() {
     this.employeeForm = this.fb.group({
       id: [0],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
+      firstName: ['', Validators.compose([
+        Validators.required, Validators.minLength(3), Validators.maxLength(10)
+      ])],
+      lastName: ['', Validators.compose([
+        Validators.required, Validators.minLength(3), Validators.maxLength(10)
+      ])]
     });
   }
 

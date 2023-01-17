@@ -1,4 +1,7 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using LO.CWCS.EFCore;
+using LO.CWCS.WebApi.FluentValidations;
 using Microsoft.EntityFrameworkCore;
 
 namespace LO.CWCS.WebApi
@@ -17,6 +20,9 @@ namespace LO.CWCS.WebApi
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddAutoMapper(typeof(Program));
+
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
             builder.Services.AddDbContext<CarWashDbContext>(options =>
                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

@@ -14,11 +14,13 @@ namespace LO.CWCS.WebApi.Controllers
         #region Data And Const
         private readonly CarWashDbContext _context;
         private readonly IMapper _mapper;
+        
 
         public EmployeesController(CarWashDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
+            
         }
         #endregion
 
@@ -82,14 +84,17 @@ namespace LO.CWCS.WebApi.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Employee>> CreateEmployee(EmployeeDto employeeDto)
+        public async Task<ActionResult> CreateEmployee(EmployeeDto employeeDto)
         {
-            var employee = _mapper.Map<Employee>(employeeDto);
+            
+                var employee = _mapper.Map<Employee>(employeeDto);
 
-            _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
+                _context.Employees.Add(employee);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEmployee", new { id = employeeDto.Id }, employeeDto);
+                return CreatedAtAction("GetEmployee", new { id = employeeDto.Id }, employeeDto);
+            
+
         }
 
         [HttpDelete("{id}")]
