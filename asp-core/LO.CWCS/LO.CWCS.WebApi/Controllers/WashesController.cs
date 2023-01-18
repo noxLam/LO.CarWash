@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using LO.CWCS.EFCore;
 using LO.CWCS.Entities;
+using AutoMapper;
+using LO.CWCS.Dtos.Washes;
 
 namespace LO.CWCS.WebApi.Controllers
 {
@@ -11,18 +13,24 @@ namespace LO.CWCS.WebApi.Controllers
     {
         #region Data And Const
         private readonly CarWashDbContext _context;
+        private readonly IMapper _mapper;
 
-        public WashesController(CarWashDbContext context)
+        public WashesController(CarWashDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         #endregion
 
         #region Services
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Wash>>> GetWashes()
+        public async Task<ActionResult<IEnumerable<WashListDto>>> GetWashes()
         {
-            return await _context.Washes.ToListAsync();
+            var washes = await _context.Washes.ToListAsync();
+
+            var washDtos = _mapper.Map<List<WashListDto>>(washes);
+
+            return washDtos;
         }
 
         [HttpGet("{id}")]
@@ -70,12 +78,14 @@ namespace LO.CWCS.WebApi.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Wash>> CreateWash(Wash wash)
+        public async Task<ActionResult<Wash>> CreateWash(WashDto washDto)
         {
+            var wash = _mapper.Map<Wash>(washDto);
+
             _context.Washes.Add(wash);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetWash", new { id = wash.Id }, wash);
+            return CreatedAtAction("GetWash", new { id = washDto.Id }, washDto);
         }
 
         [HttpDelete("{id}")]
