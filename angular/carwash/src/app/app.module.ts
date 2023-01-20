@@ -23,6 +23,8 @@ import { AddEditEmployeeComponent } from './employee/add-edit-employee/add-edit-
 import { DeleteEmployeeComponent } from './employee/dialogs/delete-employee/delete-employee.component';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { WashComponent } from './wash/wash.component';
+import { AddEditWashComponent } from './wash/add-edit-wash/add-edit-wash.component';
+import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { WashComponent } from './wash/wash.component';
     AddEditEmployeeComponent,
     DeleteEmployeeComponent,
     EmployeeDetailsComponent,
-    WashComponent
+    WashComponent,
+    AddEditWashComponent,
+    EnumToArrayPipe
   ],
   imports: [
     BrowserModule,

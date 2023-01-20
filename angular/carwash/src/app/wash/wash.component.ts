@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { WashType } from '../enums/washType.enum';
 import { WashList } from '../models/washes/washList.model';
 import { WashService } from '../services/wash.service';
 
@@ -12,6 +13,8 @@ import { WashService } from '../services/wash.service';
 export class WashComponent implements OnInit{
 
   washes: WashList[] = [];
+  washType = WashType;
+  showSpinner: boolean = true;
 
   constructor (
     private washSvc: WashService,
@@ -27,6 +30,7 @@ export class WashComponent implements OnInit{
     this.washSvc.getWashes().subscribe({
       next: (washesFromApi) => {
         this.washes = washesFromApi;
+        this.showSpinner = false;
       },
       error: (e: HttpErrorResponse) => {
         console.log(e);

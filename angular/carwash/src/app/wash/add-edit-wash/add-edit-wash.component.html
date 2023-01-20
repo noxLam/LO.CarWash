@@ -1,0 +1,21 @@
+<h1>
+    <span *ngIf="pageMode == pageModeEnum.Create">Add a new Wash</span>
+    <span *ngIf="pageMode == pageModeEnum.Edit">
+        <span>Edit</span>
+        <span class="text-primary">{{ wash.washType }}</span>
+    </span>
+</h1>
+<hr>
+
+<form [formGroup]="washForm" (ngSubmit)="submitForm()">
+    <div class="row">
+        <mat-form-field appearance="fill">
+            <mat-label>Wash Type</mat-label>
+            <mat-select formControlName="washType">
+              <mat-option *ngFor="let washType of washTypeEnum | enumToArray" [value]="washType.index">
+                {{ washType.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+</form>

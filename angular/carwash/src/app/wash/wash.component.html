@@ -1,5 +1,9 @@
 <h1>Washes</h1>
+<hr>
 
+<button class="mb-4" mat-raised-button color="primary" [routerLink]="['/washes/create']">Add a new Wash</button>
+
+<div class="position-relative">
 <table class="table">
     <thead>
         <tr>
@@ -14,3 +18,9 @@
         </tr>
     </tbody>
 </table>
+
+<div class="spin-wrap" *ngIf="showSpinner">
+    <mat-spinner class="start-50 top-50 translate-middle position-absolute"></mat-spinner>
+</div>
+
+</div>
