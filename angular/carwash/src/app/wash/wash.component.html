@@ -7,14 +7,14 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Price</th>
             <th>Wash Services</th>
+            <th>Price</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let wash of washes">
-            <td>{{ wash.price }}</td>
             <td>{{ wash.washService }}</td>
+            <td>{{ wash.price }} JD</td>
         </tr>
     </tbody>
 </table>

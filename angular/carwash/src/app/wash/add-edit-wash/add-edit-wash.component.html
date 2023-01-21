@@ -9,13 +9,39 @@
 
 <form [formGroup]="washForm" (ngSubmit)="submitForm()">
     <div class="row">
+      <div class="">
         <mat-form-field appearance="fill">
             <mat-label>Wash Type</mat-label>
-            <mat-select formControlName="washType">
+            <mat-select formControlName="washType" required>
               <mat-option *ngFor="let washType of washTypeEnum | enumToArray" [value]="washType.index">
                 {{ washType.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
+        </div>
+      <div class="">
+        <mat-form-field appearance="fill">
+            <mat-label>Vehicle Size</mat-label>
+            <mat-select formControlName="vehicleSize" required>
+              <mat-option *ngFor="let vehicleSize of vehicleSizeEnum | enumToArray" [value]="vehicleSize.index">
+                {{ vehicleSize.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="">
+          <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="price" required>
+            <mat-error>Price is required</mat-error>
+          </mat-form-field>
+        </div>
+<div class="mt-3">
+  <button class="me-2" [routerLink]="['/washes']" mat-flat-button>Cancel</button>
+  <button mat-raised-button color="warn" type="submit">
+    <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
+    <span *ngIf="pageMode == pageModeEnum.Edit">Edit</span>
+  </button>
+</div>  
     </div>
 </form>

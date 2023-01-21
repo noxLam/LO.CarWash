@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageMode } from 'src/app/enums/pageMod.enum';
 import { Size } from 'src/app/enums/size.enum';
@@ -91,9 +91,9 @@ export class AddEditWashComponent implements OnInit{
   private buildForm() {
     this.washForm = this.fb.group({
       id: [0],
-      washType: [''],
-      vehicleSize: [''],
-      price: ['']
+      washType: ['', Validators.required],
+      vehicleSize: ['', Validators.required],
+      price: ['', Validators.required]
     });
   }
 

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Size } from '../enums/size.enum';
 import { WashType } from '../enums/washType.enum';
 import { WashList } from '../models/washes/washList.model';
 import { WashService } from '../services/wash.service';
@@ -14,6 +15,7 @@ export class WashComponent implements OnInit{
 
   washes: WashList[] = [];
   washType = WashType;
+  vehicleSize = Size;
   showSpinner: boolean = true;
 
   constructor (
