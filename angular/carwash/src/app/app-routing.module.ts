@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddEditCarComponent } from './car/add-edit-car/add-edit-car.component';
 import { CarDetailsComponent } from './car/car-details/car-details.component';
 import { CarComponent } from './car/car.component';
+import { CardComponent } from './card/card.component';
 import { AddEditCustomerComponent } from './customer/add-edit-customer/add-edit-customer.component';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -36,6 +37,8 @@ const routes: Routes = [
   {path:"washes", component: WashComponent},
   {path:"washes/create", component: AddEditWashComponent},
   {path:"washes/edit/:id", component: AddEditWashComponent},
+
+  {path:"cards", component: CardComponent},
 
   {path: "not-found", component: NotFoundComponent},
   { path: '**', redirectTo: '/home', pathMatch: 'full' }

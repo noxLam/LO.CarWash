@@ -4,6 +4,7 @@ using LO.CWCS.EFCore;
 using LO.CWCS.Entities;
 using AutoMapper;
 using LO.CWCS.Dtos.Washes;
+using LO.CWCS.Dtos.Lookups;
 
 namespace LO.CWCS.WebApi.Controllers
 {
@@ -101,7 +102,23 @@ namespace LO.CWCS.WebApi.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        } 
+        }
+        #endregion
+
+        #region Lookups
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<LookupDto>>> GetLookup()
+        {
+            var washLookup = await _context
+                                     .Washes
+                                     .Select(w => new LookupDto()
+                                     {
+                                         Value= w.Id,
+                                         Text= w.WashService
+                                     })
+                                     .ToListAsync();
+            return washLookup;
+        }
         #endregion
 
         #region Private Methods

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/employees/employee.model';
 import { EmployeeList } from '../models/employees/employeeList.model';
+import { Lookup } from '../models/lookup.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class EmployeeService {
 
   deleteEmployee(id: number): Observable<any> {
     return this.http.delete<Employee>(`${this.apiUrl}/DeleteEmployee/${id}`);
+  }
+
+  getEmployeeLookup(): Observable<Lookup[]> {
+    return this.http.get<Lookup[]>(`${this.apiUrl}/GetLookup`);
   }
 
 }

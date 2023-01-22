@@ -4,6 +4,7 @@ using LO.CWCS.EFCore;
 using LO.CWCS.Entities;
 using AutoMapper;
 using LO.CWCS.Dtos.Employees;
+using LO.CWCS.Dtos.Lookups;
 
 namespace LO.CWCS.WebApi.Controllers
 {
@@ -110,7 +111,23 @@ namespace LO.CWCS.WebApi.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        } 
+        }
+        #endregion
+
+        #region Lookups
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<LookupDto>>> GetLookup()
+        {
+            var employeeLookup = await _context
+                                           .Employees
+                                           .Select(e => new LookupDto()
+                                           {
+                                               Value= e.Id,
+                                               Text= e.FullName
+                                           })
+                                           .ToListAsync();
+            return employeeLookup;
+        }
         #endregion
 
         #region Private Methods

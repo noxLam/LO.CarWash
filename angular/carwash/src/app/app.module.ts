@@ -26,6 +26,8 @@ import { WashComponent } from './wash/wash.component';
 import { AddEditWashComponent } from './wash/add-edit-wash/add-edit-wash.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { DeleteWashComponent } from './wash/dialogs/delete-wash/delete-wash.component';
+import { CardComponent } from './card/card.component';
+import { AddEditCardComponent } from './card/add-edit-card/add-edit-card.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { DeleteWashComponent } from './wash/dialogs/delete-wash/delete-wash.comp
     WashComponent,
     AddEditWashComponent,
     EnumToArrayPipe,
-    DeleteWashComponent
+    DeleteWashComponent,
+    CardComponent,
+    AddEditCardComponent
   ],
   imports: [
     BrowserModule,

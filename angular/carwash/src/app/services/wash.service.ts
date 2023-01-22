@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Lookup } from '../models/lookup.model';
 import { Wash } from '../models/washes/wash.model';
 import { WashList } from '../models/washes/washList.model';
 import { DeleteWashComponent } from '../wash/dialogs/delete-wash/delete-wash.component';
@@ -32,5 +33,9 @@ export class WashService {
 
   deleteWash(id: number): Observable<any> {
     return this.http.delete<Wash>(`${this.apiUrl}/DeleteWash/${id}`);
+  }
+
+  getWashLookup(): Observable<Lookup[]> {
+    return this.http.get<Lookup[]>(`${this.apiUrl}/GetLookup`)
   }
 }

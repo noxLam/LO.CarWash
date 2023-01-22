@@ -26,7 +26,12 @@ namespace LO.CWCS.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CardListDto>>> GetCards()
         {
-            var cards = await _context.Cards.ToListAsync();
+            var cards = await _context.Cards
+                .Include(c => c.Car)
+                .Include(c => c.Customer)
+                .Include(c => c.Employee)
+                .Include(c => c.Wash)
+                .ToListAsync();
             var cardDtos = _mapper.Map<List<CardListDto>>(cards);
             return cardDtos;
         }
@@ -76,14 +81,27 @@ namespace LO.CWCS.WebApi.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Card>> CreateCard(Card card)
+        public async Task<ActionResult<Card>> CreateCard(CardDto cardDto)
         {
+
+            var card = _mapper.Map<Card>(cardDto);
+
             card.ActionDate= DateTime.Now;
+            card.TotalPrice = await GetWashPrice(cardDto.WashId);
 
             _context.Cards.Add(card);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCard", new { id = card.Id }, card);
+            return CreatedAtAction("GetCard", new { id = cardDto.Id }, cardDto);
+        }
+
+        private async Task<double> GetWashPrice(int washId)
+        {
+            var wash = await _context.Washes.SingleAsync(w => w.Id == washId);
+
+            var totalPrice = wash.Price;
+
+            return totalPrice;
         }
 
         [HttpDelete("{id}")]
