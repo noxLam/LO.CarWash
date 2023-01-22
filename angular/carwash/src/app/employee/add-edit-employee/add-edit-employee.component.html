@@ -18,7 +18,7 @@
                   <mat-error *ngIf="employeeForm.controls['firstName'].hasError('required')">First Name Is required</mat-error>
                   <mat-error *ngIf="employeeForm.controls['firstName'].hasError('minlength')
                   ||
-                   employeeForm.controls['firstName'].hasError('maxlength')">First name must be between 3 and 16 characters long.
+                   employeeForm.controls['firstName'].hasError('maxlength')">First name must be between 3 and 10 characters long.
                 </mat-error>
                 </mat-form-field>
             </div>
@@ -31,7 +31,7 @@
                   <mat-error *ngIf="employeeForm.controls['lastName'].hasError('minlength')
                       ||
                       employeeForm.controls['lastName'].hasError('maxlength')">
-                    Last name must be between 3 and 16 characters long.
+                    Last name must be between 3 and 10 characters long.
                   </mat-error>
                 </mat-form-field>
             </div>

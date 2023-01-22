@@ -15,6 +15,14 @@
         <tr *ngFor="let wash of washes">
             <td>{{ wash.washService }}</td>
             <td>{{ wash.price }} JD</td>
+            <td class="pb-0 mb-0">
+                <a class="me-2 text-black" [routerLink]="['/washes/edit', wash.id]">
+                    <mat-icon>build</mat-icon>
+                </a>
+                <a class="pointer text-danger" (click)="deleteWash(wash.id)">
+                    <mat-icon>clear</mat-icon>
+                </a>
+            </td>
         </tr>
     </tbody>
 </table>

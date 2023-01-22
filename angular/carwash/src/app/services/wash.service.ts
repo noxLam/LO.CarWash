@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Wash } from '../models/washes/wash.model';
 import { WashList } from '../models/washes/washList.model';
+import { DeleteWashComponent } from '../wash/dialogs/delete-wash/delete-wash.component';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class WashService {
 
   editWash(id: number, wash: Wash): Observable<any> {
     return this.http.put<Wash>(`${this.apiUrl}/EditWash/${id}`, wash);
+  }
+
+  deleteWash(id: number): Observable<any> {
+    return this.http.delete<Wash>(`${this.apiUrl}/DeleteWash/${id}`);
   }
 }
