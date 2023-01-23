@@ -49,14 +49,38 @@ namespace LO.CWCS.WebApi.Controllers
             return card;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CardDto>> GetEditCard(int id)
+        {
+            var card = await _context
+                                  .Cards
+                                  .Include(c => c.Car)
+                                  .Include(c => c.Customer)
+                                  .Include(c => c.Employee)
+                                  .Include(c => c.Wash)
+                                  .SingleOrDefaultAsync(c => c.Id == id);
+            if(card == null)
+            {
+                return NotFound();
+            }
+
+            var cardDto = _mapper.Map<CardDto>(card);
+
+            return cardDto;
+        }
+
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditCard(int id, Card card)
+        public async Task<IActionResult> EditCard(int id, CardDto cardDto)
         {
-            if (id != card.Id)
+            if (id != cardDto.Id)
             {
                 return BadRequest();
             }
+
+            var card = _mapper.Map<Card>(cardDto);
+            card.ActionDate = DateTime.Now;
+            card.TotalPrice = await GetWashPrice(cardDto.WashId);
 
             _context.Entry(card).State = EntityState.Modified;
 

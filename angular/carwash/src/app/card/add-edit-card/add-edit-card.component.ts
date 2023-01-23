@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -31,6 +32,8 @@ export class AddEditCardComponent implements OnInit{
   employeeLookup!: Lookup[];
   washLookup!: Lookup[];
 
+  totalPrice: number = 0;
+
   constructor (
     private cardSvc: CardService,
     private customerSvc: CustomerService,
@@ -43,7 +46,135 @@ export class AddEditCardComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+
+    this.setCardId();
+    this.setPageMode();
+
+    this.buildForm();
+
+    if(this.cardId)
+    {
+      this.loadCard();
+    }
+
+    this.loadCustomerLookup();
+    this.loadCarLookup();
+    this.loadEmployeeLookup();
+    this.loadWashLookup();
     
   }
+
+  
+
+  
+
+  
+  submitForm(): void {
+   
+    if(this.cardForm.valid)
+    {
+      if(this.pageMode == PageMode.Create)
+      {
+        this.cardSvc.createCard(this.cardForm.value).subscribe({
+          next: () => {
+            this.router.navigate(['/cards']);
+          },
+          error: (e: HttpErrorResponse) => {
+            console.log(e);
+            alert(e.message);
+          }
+        });
+      }else {
+        this.cardSvc.editCard(this.cardId, this.cardForm.value).subscribe({
+          next: () => {
+            this.router.navigate(['/cards']);
+          },
+          error: (e: HttpErrorResponse) => {
+            console.log(e);
+            alert(e.message);
+          }
+        });
+      }
+    }
+
+  }
+
+  
+
+
+  
+
+  
+  //#region privates
+
+  private setCardId() {
+    this.cardId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  }
+
+  private setPageMode() {
+    if(this.cardId)
+    {
+      this.pageMode = PageMode.Edit;
+    }
+  }
+
+  private buildForm() {
+    this.cardForm = this.fb.group({
+      id: [0],
+      actionDate: [''],
+      paymentMethod: [''],
+      customerId: [''],
+      carId: [''],
+      washId: [''],
+      employeeId: ['']
+
+    });
+  }
+
+  private loadCard() {
+    this.cardSvc.getEditCard(this.cardId).subscribe({
+      next: (cardFromApi) => {
+        this.card = cardFromApi;
+        this.cardForm.patchValue(cardFromApi);
+      },
+      error: (e: HttpErrorResponse) => {
+        console.log(e);
+        alert(e.message);
+      }
+    });
+  }
+
+  private loadCustomerLookup() {
+    this.customerSvc.getCustomerLookup().subscribe({
+      next: (customerLookupFromApi) => {
+        this.customerLookup = customerLookupFromApi;
+      }
+    });
+  }
+
+  private loadCarLookup() {
+    this.carSvc.getCarLookup().subscribe({
+      next: (carLookupFromApi) => {
+        this.carLookup = carLookupFromApi;
+      }
+    });
+  }
+
+  private loadEmployeeLookup() {
+    this.employeeSvc.getEmployeeLookup().subscribe({
+      next: (employeeLookupFromApi) => {
+        this.employeeLookup = employeeLookupFromApi;
+      }
+    });
+  }
+
+  private loadWashLookup() {
+    this.washSvc.getWashLookup().subscribe({
+      next: (washLookupFromApi) => {
+        this.washLookup = washLookupFromApi;
+      }
+    });
+  }
+  //#endregion
 
 }
