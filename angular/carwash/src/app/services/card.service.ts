@@ -33,4 +33,8 @@ export class CardService {
   editCard(id: number, card: Card): Observable<any> {
     return this.http.put<Card>(`${this.apiUrl}/EditCard/${id}`, card);
   }
+
+  getWashPrice(washId: number): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/GetWashPrice?washId=${washId}`);
+  }
 }

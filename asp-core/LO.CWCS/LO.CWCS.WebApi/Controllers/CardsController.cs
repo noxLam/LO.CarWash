@@ -80,7 +80,7 @@ namespace LO.CWCS.WebApi.Controllers
 
             var card = _mapper.Map<Card>(cardDto);
             card.ActionDate = DateTime.Now;
-            card.TotalPrice = await GetWashPrice(cardDto.WashId);
+            card.TotalPrice = await GetWashPriceInternal(cardDto.WashId);
 
             _context.Entry(card).State = EntityState.Modified;
 
@@ -111,7 +111,7 @@ namespace LO.CWCS.WebApi.Controllers
             var card = _mapper.Map<Card>(cardDto);
 
             card.ActionDate= DateTime.Now;
-            card.TotalPrice = await GetWashPrice(cardDto.WashId);
+            card.TotalPrice = await GetWashPriceInternal(cardDto.WashId);
 
             _context.Cards.Add(card);
             await _context.SaveChangesAsync();
@@ -119,14 +119,13 @@ namespace LO.CWCS.WebApi.Controllers
             return CreatedAtAction("GetCard", new { id = cardDto.Id }, cardDto);
         }
 
-        private async Task<double> GetWashPrice(int washId)
-        {
-            var wash = await _context.Washes.SingleAsync(w => w.Id == washId);
-
-            var totalPrice = wash.Price;
-
-            return totalPrice;
+        [HttpGet]
+        public async Task<ActionResult<double>> GetWashPrice(int washId) {
+            var price = await GetWashPriceInternal(washId);
+            return price;
         }
+
+        
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCard(int id)
@@ -148,7 +147,16 @@ namespace LO.CWCS.WebApi.Controllers
         private bool CardExists(int id)
         {
             return _context.Cards.Any(e => e.Id == id);
-        } 
+        }
+
+        private async Task<double> GetWashPriceInternal(int washId)
+        {
+            var wash = await _context.Washes.SingleAsync(w => w.Id == washId);
+
+            var totalPrice = wash.Price;
+
+            return totalPrice;
+        }
         #endregion
     }
 }

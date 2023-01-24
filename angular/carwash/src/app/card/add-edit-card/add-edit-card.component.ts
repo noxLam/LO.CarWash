@@ -33,6 +33,7 @@ export class AddEditCardComponent implements OnInit{
   washLookup!: Lookup[];
 
   totalPrice: number = 0;
+  
 
   constructor (
     private cardSvc: CardService,
@@ -65,8 +66,22 @@ export class AddEditCardComponent implements OnInit{
   }
 
   
+  get washId(): number {
+    return Number(this.cardForm.controls['washId'].value);
+  }
 
-  
+  updatePrice(): void {
+    if(this.canUpdatePrice())
+    {
+      console.log("UpdatePrice Invoked");
+
+      this.cardSvc.getWashPrice(this.washId).subscribe({
+        next: (totalPriceFromApi: number) => {
+          this.totalPrice = totalPriceFromApi;
+        }
+      });
+    }
+  }
 
   
   submitForm(): void {
@@ -121,7 +136,7 @@ export class AddEditCardComponent implements OnInit{
   private buildForm() {
     this.cardForm = this.fb.group({
       id: [0],
-      actionDate: [''],
+     // actionDate: [''],
       paymentMethod: [''],
       customerId: [''],
       carId: [''],
@@ -174,6 +189,10 @@ export class AddEditCardComponent implements OnInit{
         this.washLookup = washLookupFromApi;
       }
     });
+  }
+
+  private canUpdatePrice(): boolean {
+    return this.washId != 0;
   }
   //#endregion
 
