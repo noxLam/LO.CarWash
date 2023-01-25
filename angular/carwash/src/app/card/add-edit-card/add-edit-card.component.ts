@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageMode } from 'src/app/enums/pageMod.enum';
 import { PaymentMethod } from 'src/app/enums/paymentMethod.enum';
@@ -137,11 +137,11 @@ export class AddEditCardComponent implements OnInit{
     this.cardForm = this.fb.group({
       id: [0],
      // actionDate: [''],
-      paymentMethod: [''],
-      customerId: [''],
-      carId: [''],
-      washId: [''],
-      employeeId: ['']
+      paymentMethod: ['', Validators.required],
+      customerId: ['', Validators.required],
+      carId: ['', Validators.required],
+      washId: ['', Validators.required],
+      employeeId: ['', Validators.required]
 
     });
   }
@@ -151,6 +151,7 @@ export class AddEditCardComponent implements OnInit{
       next: (cardFromApi) => {
         this.card = cardFromApi;
         this.cardForm.patchValue(cardFromApi);
+        this.updatePrice();
       },
       error: (e: HttpErrorResponse) => {
         console.log(e);

@@ -41,6 +41,7 @@ const routes: Routes = [
 
   {path:"cards", component: CardComponent},
   {path:"cards/create", component: AddEditCardComponent},
+  {path:"cards/edit/:id", component: AddEditCardComponent},
 
   {path: "not-found", component: NotFoundComponent},
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
