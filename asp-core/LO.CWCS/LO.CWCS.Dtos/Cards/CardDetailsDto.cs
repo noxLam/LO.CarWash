@@ -18,7 +18,7 @@ namespace LO.CWCS.Dtos.Cards
 
         public string CarPlateNumber { get; set; }
 
-        public string WashService { get; set; }
+        public string WashWashService { get; set; }
 
         public string EmployeeFullName { get; set; }
     }

@@ -1,8 +1,8 @@
 <h1>
     <span *ngIf="pageMode == pageModeEnum.Create">Add new Card</span>
     <span *ngIf="pageMode == pageModeEnum.Edit">
-        <span>Edit Card </span>
-        <span class="text-primary"> ( {{ card.actionDate | date: 'medium' }} )</span>
+        <span>Edit Card </span>(
+        <span class="text-primary">  {{ card.actionDate | date: 'medium' }} </span>)
     </span>
 </h1>
 

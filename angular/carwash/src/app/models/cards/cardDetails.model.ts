@@ -7,6 +7,6 @@ export interface CardDetails {
     paymentMethod: PaymentMethod;
     customerFullName: string;
     carPlateNumber: string;
-    washService: string;
+    washWashService: string;
     employeeFullName: string;
 }

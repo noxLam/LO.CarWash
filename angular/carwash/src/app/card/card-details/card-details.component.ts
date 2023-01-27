@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PaymentMethod } from 'src/app/enums/paymentMethod.enum';
 import { CardDetails } from 'src/app/models/cards/cardDetails.model';
 import { CardService } from 'src/app/services/card.service';
 
@@ -13,6 +14,8 @@ export class CardDetailsComponent implements OnInit{
 
   cardId!: number;
   card!: CardDetails;
+
+  paymentMethod = PaymentMethod;
 
 
   constructor (
