@@ -24,6 +24,9 @@
             <td>{{ card.carPlateNumber }}</td>
             <td>{{ card.washWashService }}</td>
             <td class="pb-0 mb-0">
+                <a class="me-2 text-info" [routerLink]="['/cards/details', card.id]">
+                    <mat-icon fontIcon="info_outline"></mat-icon>
+                  </a>
                 <a class="me-2" [routerLink]="['/cards/edit', card.id]">
                     <mat-icon fontIcon="edit"></mat-icon>
                   </a>

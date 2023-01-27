@@ -10,6 +10,7 @@ namespace LO.CWCS.WebApi.AutoMapperProfiles
         {
             CreateMap<Card, CardListDto>();
             CreateMap<Card, CardDto>().ReverseMap();
+            CreateMap<Card, CardDetailsDto>();
         }
     }
 }

@@ -1,0 +1,43 @@
+<h1><span>-{{ card.customerFullName }}-</span>'s Card</h1>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-2">Action Date</div>
+    <div class="col-md-10">{{ card.actionDate }}</div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">Payment Method</div>
+    <div class="col-md-10">{{card.paymentMethod}}</div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-2">Customer Name</div>
+    <div class="col-md-10">{{card.customerFullName}}</div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-2">CarPlate Number</div>
+    <div class="col-md-10">{{card.carPlateNumber}}</div>
+  </div>
+  
+  <div class="row mt-3">
+    <div class="col-md-2">wash Service</div>
+    <div class="col-md-10">{{card.washService}}</div>
+  </div>
+  
+  <div class="row mt-3">
+    <div class="col-md-2">Employee Name</div>
+    <div class="col-md-10">{{card.employeeFullName}}</div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-2">Total Price</div>
+    <div class="col-md-10">{{card.totalPrice | currency: "JOD ":"symbol"}}</div>
+  </div>
+
+  <div class="mt-4">
+    <button class="me-2" mat-raised-button color="basic" [routerLink]="['/cards']">Back</button>
+    <button mat-raised-button color="primary" [routerLink]="['/cards/edit/', cardId]">Edit</button>
+  </div>

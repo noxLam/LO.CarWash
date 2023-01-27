@@ -4,6 +4,7 @@ import { AddEditCarComponent } from './car/add-edit-car/add-edit-car.component';
 import { CarDetailsComponent } from './car/car-details/car-details.component';
 import { CarComponent } from './car/car.component';
 import { AddEditCardComponent } from './card/add-edit-card/add-edit-card.component';
+import { CardDetailsComponent } from './card/card-details/card-details.component';
 import { CardComponent } from './card/card.component';
 import { AddEditCustomerComponent } from './customer/add-edit-customer/add-edit-customer.component';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path:"cards", component: CardComponent},
   {path:"cards/create", component: AddEditCardComponent},
   {path:"cards/edit/:id", component: AddEditCardComponent},
+  {path:"cards/details/:id", component: CardDetailsComponent},
 
   {path: "not-found", component: NotFoundComponent},
   { path: '**', redirectTo: '/home', pathMatch: 'full' }

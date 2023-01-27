@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Card } from '../models/cards/card.model';
+import { CardDetails } from '../models/cards/cardDetails.model';
 import { CardList } from '../models/cards/cardList.model';
 import { Car } from '../models/cars/car.model';
 
@@ -18,8 +19,8 @@ export class CardService {
     return this.http.get<CardList[]>(`${this.apiUrl}/GetCards`);
   }
 
-  getCard(id: number): Observable<Card> {
-    return this.http.get<Card>(`${this.apiUrl}/GetCard/${id}`);
+  getCard(id: number): Observable<CardDetails> {
+    return this.http.get<CardDetails>(`${this.apiUrl}/GetCard/${id}`);
   }
 
   createCard(card: Card): Observable<any> {
