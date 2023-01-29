@@ -65,6 +65,7 @@ export class WashComponent implements OnInit{
           },
           error: (e: HttpErrorResponse) =>{
             console.log(e);
+            alert(e.message);
           }
         });
       }

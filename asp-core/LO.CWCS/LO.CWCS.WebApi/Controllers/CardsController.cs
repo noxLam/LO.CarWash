@@ -14,11 +14,13 @@ namespace LO.CWCS.WebApi.Controllers
         #region Data and Const
         private readonly CarWashDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
-        public CardsController(CarWashDbContext context, IMapper mapper)
+        public CardsController(CarWashDbContext context, IMapper mapper, ILogger<CardsController> logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
         #endregion
 
@@ -33,6 +35,7 @@ namespace LO.CWCS.WebApi.Controllers
                 .Include(c => c.Wash)
                 .ToListAsync();
             var cardDtos = _mapper.Map<List<CardListDto>>(cards);
+            
             return cardDtos;
         }
 

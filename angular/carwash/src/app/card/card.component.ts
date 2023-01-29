@@ -43,7 +43,7 @@ export class CardComponent implements OnInit{
       if(result == true)
       {
         this.showSpinner = true;
-        this.cardSvc.DeleteCard(id).subscribe({
+        this.cardSvc.deleteCard(id).subscribe({
           next: () => {
             this.loadCards();
           },

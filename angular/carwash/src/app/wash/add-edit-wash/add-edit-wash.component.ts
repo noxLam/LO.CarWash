@@ -17,7 +17,9 @@ export class AddEditWashComponent implements OnInit{
 
   washId!: number;
   wash!: Wash;
+  washType = WashType;
   washTypeEnum = WashType;
+  vehicleSize = Size;
   vehicleSizeEnum = Size;
   washForm!: FormGroup;
   pageMode: PageMode = PageMode.Create;

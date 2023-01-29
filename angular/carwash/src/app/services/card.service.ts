@@ -40,7 +40,7 @@ export class CardService {
     return this.http.get<number>(`${this.apiUrl}/GetWashPrice?washId=${washId}`);
   }
 
-  DeleteCard(id: number): Observable<any> {
+  deleteCard(id: number): Observable<any> {
     return this.http.delete<Card>(`${this.apiUrl}/DeleteCard/${id}`);
   }
 }

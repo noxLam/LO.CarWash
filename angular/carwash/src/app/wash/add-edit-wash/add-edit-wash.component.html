@@ -1,8 +1,8 @@
 <h1>
     <span *ngIf="pageMode == pageModeEnum.Create">Add a new Wash</span>
     <span *ngIf="pageMode == pageModeEnum.Edit">
-        <span>Edit</span>
-        <span class="text-primary">{{ wash.washType }}</span>
+        <span>Edit </span>
+        <span class="text-primary">{{ washType[wash.washType] }} {{ vehicleSize[wash.vehicleSize] }}</span>
     </span>
 </h1>
 <hr>
