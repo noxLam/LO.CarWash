@@ -32,7 +32,7 @@ export class WashService {
   }
 
   deleteWash(id: number): Observable<any> {
-    return this.http.delete<Wash>(`${this.apiUrl}/DeleteWash/${id}`);
+    return this.http.delete<Wash>(`${this.apiUrl}/DeleteCard/${id}`);
   }
 
   getWashLookup(): Observable<Lookup[]> {

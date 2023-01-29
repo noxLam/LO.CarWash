@@ -30,6 +30,9 @@
                 <a class="me-2" [routerLink]="['/cards/edit', card.id]">
                     <mat-icon fontIcon="edit"></mat-icon>
                   </a>
+                  <a class="pointer text-danger" (click)="deleteCard(card.id)">
+                    <mat-icon fontIcon="delete"></mat-icon>
+                  </a>
             </td>
         </tr>
     </tbody>

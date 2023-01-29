@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DeleteCardComponent } from '../card/dialogs/delete-card/delete-card.component';
 import { Card } from '../models/cards/card.model';
 import { CardDetails } from '../models/cards/cardDetails.model';
 import { CardList } from '../models/cards/cardList.model';
@@ -37,5 +38,9 @@ export class CardService {
 
   getWashPrice(washId: number): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/GetWashPrice?washId=${washId}`);
+  }
+
+  DeleteCard(id: number): Observable<any> {
+    return this.http.delete<Card>(`${this.apiUrl}/DeleteCard/${id}`);
   }
 }

@@ -29,6 +29,7 @@ import { DeleteWashComponent } from './wash/dialogs/delete-wash/delete-wash.comp
 import { CardComponent } from './card/card.component';
 import { AddEditCardComponent } from './card/add-edit-card/add-edit-card.component';
 import { CardDetailsComponent } from './card/card-details/card-details.component';
+import { DeleteCardComponent } from './card/dialogs/delete-card/delete-card.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CardDetailsComponent } from './card/card-details/card-details.component
     DeleteWashComponent,
     CardComponent,
     AddEditCardComponent,
-    CardDetailsComponent
+    CardDetailsComponent,
+    DeleteCardComponent
   ],
   imports: [
     BrowserModule,
