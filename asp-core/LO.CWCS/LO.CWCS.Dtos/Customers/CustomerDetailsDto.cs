@@ -1,4 +1,5 @@
 ﻿using LO.CWCS.Dtos.Cars;
+using LO.CWCS.Dtos.Uploaders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace LO.CWCS.Dtos.Customers
         public CustomerDetailsDto()
         {
             Cars = new List<CarDto>();
+            Images = new List<UploaderImageDto>();
         }
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -19,5 +21,6 @@ namespace LO.CWCS.Dtos.Customers
         public string PhoneNumber { get; set; }
 
         public List<CarDto> Cars { get; set; }
+        public List<UploaderImageDto> Images { get; set; }
     }
 }

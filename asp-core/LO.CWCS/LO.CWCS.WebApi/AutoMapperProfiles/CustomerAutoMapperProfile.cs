@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using LO.CWCS.Dtos.Customers;
-using LO.CWCS.Entities;
+using LO.CWCS.Entities.Customers;
 
 namespace LO.CWCS.WebApi.AutoMapperProfiles
 {

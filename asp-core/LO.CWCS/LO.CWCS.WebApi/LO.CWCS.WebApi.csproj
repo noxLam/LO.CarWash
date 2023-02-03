@@ -24,4 +24,8 @@
     <ProjectReference Include="..\LO.CWCS.EFCore\LO.CWCS.EFCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
+  </ItemGroup>
+
 </Project>

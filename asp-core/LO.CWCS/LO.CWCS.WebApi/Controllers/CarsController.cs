@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LO.CWCS.EFCore;
-using LO.CWCS.Entities;
 using AutoMapper;
 using LO.CWCS.Dtos.Cars;
 using LO.CWCS.Dtos.Lookups;
+using LO.CWCS.Entities.Cars;
+using LO.CWCS.Dtos.Uploaders;
 
 namespace LO.CWCS.WebApi.Controllers
 {
@@ -33,26 +34,34 @@ namespace LO.CWCS.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Car>> GetCar(int id)
+        public async Task<ActionResult<CarDto>> GetCar(int id)
         {
-            var car = await _context.Cars.FindAsync(id);
+            var car = await _context.Cars
+                .Include(c => c.Images)
+                .SingleOrDefaultAsync(c => c.Id == id);
 
             if (car == null)
             {
                 return NotFound();
             }
 
-            return car;
+            var carDto = _mapper.Map<CarDto>(car);
+
+            return carDto;
         }
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditCar(int id, Car car)
+        public async Task<IActionResult> EditCar(int id, CarDto carDto)
         {
-            if (id != car.Id)
+            if (id != carDto.Id)
             {
                 return BadRequest();
             }
+
+            var car = _mapper.Map<Car>(carDto);
+
+            UpdateCarImage(carDto.Images, id);
 
             _context.Entry(car).State = EntityState.Modified;
 
@@ -128,6 +137,17 @@ namespace LO.CWCS.WebApi.Controllers
         {
             return _context.Cars.Any(c => c.PlateNumber == plateNum);
         }
+
+        private async Task UpdateCarImage(List<UploaderImageDto> images, int id)
+        {
+            var car = await _context.Cars.Include(a => a.Images).SingleAsync(a => a.Id == id);
+            car.Images.Clear();
+
+            var carImages = _mapper.Map<List<UploaderImageDto>, List<CarImage>>(images);
+
+            car.Images.AddRange(carImages);
+        }
+
         #endregion
     }
 }

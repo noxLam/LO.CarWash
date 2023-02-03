@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using LO.CWCS.Dtos.Cars;
-using LO.CWCS.Entities;
+using LO.CWCS.Entities.Cars;
 
 namespace LO.CWCS.WebApi.AutoMapperProfiles
 {

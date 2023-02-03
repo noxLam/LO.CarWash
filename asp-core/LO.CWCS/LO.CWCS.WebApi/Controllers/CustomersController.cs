@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LO.CWCS.EFCore;
-using LO.CWCS.Entities;
 using AutoMapper;
 using LO.CWCS.Dtos.Customers;
 using LO.CWCS.Dtos.Lookups;
+using LO.CWCS.Entities.Customers;
+using LO.CWCS.Dtos.Uploaders;
 
 namespace LO.CWCS.WebApi.Controllers
 {
@@ -37,6 +38,7 @@ namespace LO.CWCS.WebApi.Controllers
         {
             var customer = await _context.Customers
                                              .Include(c => c.Cars)
+                                             .Include(c => c.Images)
                                              .SingleOrDefaultAsync(c => c.Id == id);
 
             if (customer == null)
@@ -55,6 +57,7 @@ namespace LO.CWCS.WebApi.Controllers
             var customer = await _context
                                      .Customers
                                      .Include(c => c.Cars)
+                                     .Include(c => c.Images)
                                      .SingleOrDefaultAsync(c => c.Id == id);
             if(customer == null)
             {
@@ -82,6 +85,8 @@ namespace LO.CWCS.WebApi.Controllers
             {
                 await _context.SaveChangesAsync();
 
+                await UpdateCustomerImages(customerDto.Images, customerDto.Id);
+
                 await UpdateCustomerCars(customerDto.CarIds, customerDto.Id);
 
                 await _context.SaveChangesAsync();
@@ -104,7 +109,7 @@ namespace LO.CWCS.WebApi.Controllers
         
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> CreateCustomer(CustomerDto customerDto)
+        public async Task<ActionResult> CreateCustomer(CustomerDto customerDto)
         {
             var customer = _mapper.Map<Customer>(customerDto);
             await AddCarsToCustomer(customerDto.CarIds, customer);
@@ -176,6 +181,16 @@ namespace LO.CWCS.WebApi.Controllers
             {
                 customer.Cars.AddRange(cars);
             }
+        }
+
+        private async Task UpdateCustomerImages(List<UploaderImageDto> images, int id)
+        {
+            var customer = await _context.Customers.Include(v => v.Images).SingleAsync(v => v.Id == id);
+            customer.Images.Clear();
+
+            var customerImages = _mapper.Map<List<UploaderImageDto>, List<CustomerImage>>(images);
+
+            customer.Images.AddRange(customerImages);
         }
 
         #endregion

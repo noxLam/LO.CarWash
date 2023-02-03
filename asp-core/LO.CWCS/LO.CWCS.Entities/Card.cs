@@ -1,4 +1,6 @@
-﻿using LO.CWCS.Utils.Enums;
+﻿using LO.CWCS.Entities.Cars;
+using LO.CWCS.Entities.Customers;
+using LO.CWCS.Utils.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
