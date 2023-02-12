@@ -2,12 +2,14 @@
     <span *ngIf="pageMode == pageModeEnum.Create">Add Customer</span>
     <span *ngIf="pageMode == pageModeEnum.Edit">
         <span>Edit Customer </span>
-        <span class="text-primary"> {{ customer?.firstName }} {{ customer?.lastName }}</span>
+        <span class="text-primary"> {{ customer.firstName }} {{ customer.lastName }}</span>
     </span>
 </h1>
 <hr>
 
 <form [formGroup]="customerForm" (ngSubmit)="submitForm()">
+
+    <app-image-uploader (onUploadFinished)="uploadFinished($event)" [config]="uploaderConfig" [imagesNames]="customer.images"></app-image-uploader>
     
     <div class="row">
         <div class="col-md-6">

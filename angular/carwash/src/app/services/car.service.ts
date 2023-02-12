@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Car } from '../models/cars/car.model';
 import { CarList } from '../models/cars/carList.model';
 import { Lookup } from '../models/lookup.model';
@@ -10,7 +11,7 @@ import { Lookup } from '../models/lookup.model';
 })
 export class CarService {
 
-  apiUrl = 'https://localhost:7060/api/Cars';
+  apiUrl = `${environment.apiUrl}/Cars`;
 
   constructor(private http: HttpClient) { }
 

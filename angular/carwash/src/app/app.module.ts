@@ -30,6 +30,9 @@ import { CardComponent } from './card/card.component';
 import { AddEditCardComponent } from './card/add-edit-card/add-edit-card.component';
 import { CardDetailsComponent } from './card/card-details/card-details.component';
 import { DeleteCardComponent } from './card/dialogs/delete-card/delete-card.component';
+import { ImageUploaderComponent } from './directive/image-uploader/image-uploader.component';
+import { TestComponent } from './test/test.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,9 @@ import { DeleteCardComponent } from './card/dialogs/delete-card/delete-card.comp
     CardComponent,
     AddEditCardComponent,
     CardDetailsComponent,
-    DeleteCardComponent
+    DeleteCardComponent,
+    ImageUploaderComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ import { DeleteCardComponent } from './card/dialogs/delete-card/delete-card.comp
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImageUploaderConfig } from 'src/app/directive/image-uploader/image-uploader.config';
+import { UploaderStyle, UploaderMode, UploaderType } from 'src/app/directive/image-uploader/uploader.enums';
+import { UploaderImage } from 'src/app/directive/image-uploader/UploaderImage.data';
 import { Car } from 'src/app/models/cars/car.model';
 import { CarService } from 'src/app/services/car.service';
 
@@ -13,6 +16,12 @@ export class CarDetailsComponent implements OnInit {
 
   carId!: number;
   car!: Car;
+
+  images: UploaderImage[] = [];
+
+  uploaderConfig = new ImageUploaderConfig(UploaderStyle.Normal, UploaderMode.Details, UploaderType.Single);
+
+
 
   constructor (
     private carSvc: CarService,
@@ -35,6 +44,10 @@ export class CarDetailsComponent implements OnInit {
       this.carSvc.getCar(this.carId).subscribe({
         next: (carFromApi) => {
           this.car = carFromApi;
+
+          if(carFromApi.images) {
+            this.images = carFromApi.images;
+          }
         },
         error: (e: HttpErrorResponse) => {
           console.log(e);

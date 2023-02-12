@@ -166,7 +166,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -205,6 +205,9 @@ namespace LO.CWCS.EFCore.Migrations
                         .HasColumnType("int");
 
                     b.HasIndex("CarId");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("CarImages", (string)null);
                 });

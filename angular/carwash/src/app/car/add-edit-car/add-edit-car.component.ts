@@ -2,6 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImageUploaderConfig } from 'src/app/directive/image-uploader/image-uploader.config';
+import { UploaderStyle, UploaderMode, UploaderType } from 'src/app/directive/image-uploader/uploader.enums';
+import { UploaderImage } from 'src/app/directive/image-uploader/UploaderImage.data';
 import { PageMode } from 'src/app/enums/pageMod.enum';
 import { Car } from 'src/app/models/cars/car.model';
 import { CarService } from 'src/app/services/car.service';
@@ -13,11 +16,17 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class AddEditCarComponent implements OnInit {
 
-  carId!: number;
+  carId?: number;
   car?: Car;
   carForm!: FormGroup;
   pageMode: PageMode = PageMode.Create;
   pageModeEnum = PageMode;
+
+  images: UploaderImage[] = [];
+
+  uploaderConfig = new ImageUploaderConfig(UploaderStyle.Normal, UploaderMode.AddEdit, UploaderType.Single);
+
+
 
   carPlateNumExists: boolean = false;
   carPlateNumExistsMessage: string = 'This Plate Number Already Exists';
@@ -42,7 +51,7 @@ export class AddEditCarComponent implements OnInit {
     
   }
 
-  submitForm(): void {
+  submitForm() {
     if(this.carForm.valid)
     {
       if(this.pageMode == PageMode.Create)
@@ -57,7 +66,7 @@ export class AddEditCarComponent implements OnInit {
           }
         });
       }else {
-        this.carSvc.editCar(this.carId, this.carForm.value).subscribe({
+        this.carSvc.editCar(this.carId!, this.carForm.value).subscribe({
           next: () => {
             this.router.navigate(['/cars']);
           },
@@ -70,6 +79,13 @@ export class AddEditCarComponent implements OnInit {
     }
   }
   
+
+  uploadFinished(uploaderImages: UploaderImage[]) {
+
+    this.carForm.patchValue({
+      images: uploaderImages
+    });
+  }
   
 
   
@@ -89,15 +105,17 @@ export class AddEditCarComponent implements OnInit {
       id: [0],
       make: ['', Validators.required],
       model: ['', Validators.required],
-      plateNumber: ['', Validators.required]
+      plateNumber: ['', Validators.required],
+      images: [[]]
     });
   }
 
   private loadCar() {
-    this.carSvc.getCar(this.carId).subscribe({
+    this.carSvc.getCar(this.carId!).subscribe({
       next: (carFromApi) => {
         this.car = carFromApi;
         this.carForm.patchValue(carFromApi);
+        this.images = carFromApi.images;
       },
       error: (e: HttpErrorResponse) => {
         console.log(e);

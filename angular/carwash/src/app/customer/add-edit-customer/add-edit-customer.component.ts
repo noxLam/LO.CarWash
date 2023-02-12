@@ -2,6 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImageUploaderConfig } from 'src/app/directive/image-uploader/image-uploader.config';
+import { UploaderStyle, UploaderMode, UploaderType } from 'src/app/directive/image-uploader/uploader.enums';
+import { UploaderImage } from 'src/app/directive/image-uploader/UploaderImage.data';
 import { PageMode } from 'src/app/enums/pageMod.enum';
 import { Customer } from 'src/app/models/customers/customer.model';
 import { Lookup } from 'src/app/models/lookup.model';
@@ -17,11 +20,13 @@ export class AddEditCustomerComponent implements OnInit {
 
 
   customerId?: number;
-  customer?: Customer;
+  customer: Customer = new Customer();
   customerForm!: FormGroup;
   pageMode: PageMode = PageMode.Create;
   pageModeEnum = PageMode;
   carsLookup: Lookup[] = [];
+
+  uploaderConfig = new ImageUploaderConfig(UploaderStyle.Normal, UploaderMode.AddEdit, UploaderType.Multiple);
   
 
 
@@ -54,7 +59,8 @@ export class AddEditCustomerComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      carIds: [[]]
+      carIds: [[]],
+      images: []
     });
   }
 
@@ -84,6 +90,14 @@ export class AddEditCustomerComponent implements OnInit {
         });
       }
     }
+  }
+
+
+  uploadFinished(uploaderImages: UploaderImage[]) {
+    
+    this.customerForm.patchValue({
+      images: uploaderImages
+    })
   }
 
 

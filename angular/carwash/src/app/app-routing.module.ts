@@ -14,6 +14,7 @@ import { EmployeeDetailsComponent } from './employee/employee-details/employee-d
 import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TestComponent } from './test/test.component';
 import { AddEditWashComponent } from './wash/add-edit-wash/add-edit-wash.component';
 import { WashComponent } from './wash/wash.component';
 
@@ -44,6 +45,8 @@ const routes: Routes = [
   {path:"cards/create", component: AddEditCardComponent},
   {path:"cards/edit/:id", component: AddEditCardComponent},
   {path:"cards/details/:id", component: CardDetailsComponent},
+
+  { path: 'test', component: TestComponent },
 
   {path: "not-found", component: NotFoundComponent},
   { path: '**', redirectTo: '/home', pathMatch: 'full' }

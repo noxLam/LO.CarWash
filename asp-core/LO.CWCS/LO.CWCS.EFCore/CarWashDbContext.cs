@@ -32,6 +32,10 @@ namespace LO.CWCS.EFCore
                          .HasIndex(c => c.PlateNumber)
                          .IsUnique();
 
+            modelBuilder.Entity<CarImage>()
+                        .HasIndex(c => c.Name)
+                        .IsUnique();
+
             modelBuilder.Entity<UploaderImage>().UseTpcMappingStrategy()
                 .ToTable("UploaderImages");
 

@@ -61,9 +61,9 @@ namespace LO.CWCS.WebApi.Controllers
 
             var car = _mapper.Map<Car>(carDto);
 
-            UpdateCarImage(carDto.Images, id);
 
             _context.Entry(car).State = EntityState.Modified;
+            await UpdateCarImage(carDto.Images, id);
 
             try
             {
