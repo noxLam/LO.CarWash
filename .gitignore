@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/asp-core/LO.CWCS/LO.CWCS.WebApi/Resources/Images
