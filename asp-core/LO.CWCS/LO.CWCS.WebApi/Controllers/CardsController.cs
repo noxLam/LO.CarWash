@@ -89,7 +89,7 @@ namespace LO.CWCS.WebApi.Controllers
             }
 
             var card = _mapper.Map<Card>(cardDto);
-            card.ActionDate = DateTime.Now;
+            //card.ActionDate = DateTime.Now;
             card.TotalPrice = await GetWashPriceInternal(cardDto.WashId);
 
             _context.Entry(card).State = EntityState.Modified;

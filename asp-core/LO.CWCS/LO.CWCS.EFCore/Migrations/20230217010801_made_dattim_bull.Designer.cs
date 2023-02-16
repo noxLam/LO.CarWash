@@ -4,6 +4,7 @@ using LO.CWCS.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LO.CWCS.EFCore.Migrations
 {
     [DbContext(typeof(CarWashDbContext))]
-    partial class CarWashDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230217010801_made_dattim_bull")]
+    partial class madedattimbull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

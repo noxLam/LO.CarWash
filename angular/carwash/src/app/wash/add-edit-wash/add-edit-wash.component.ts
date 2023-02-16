@@ -15,7 +15,7 @@ import { WashService } from 'src/app/services/wash.service';
 })
 export class AddEditWashComponent implements OnInit{
 
-  washId!: number;
+  washId?: number;
   wash!: Wash;
   washType = WashType;
   washTypeEnum = WashType;
@@ -61,7 +61,7 @@ export class AddEditWashComponent implements OnInit{
         });
       }else
       {
-        this.washSvc.editWash(this.washId, this.washForm.value).subscribe({
+        this.washSvc.editWash(this.washId!, this.washForm.value).subscribe({
           next: () => {
             this.router.navigate(['/washes']);
           },
@@ -78,7 +78,7 @@ export class AddEditWashComponent implements OnInit{
 
   //#region privates 
   private loadWash() {
-    this.washSvc.getWash(this.washId).subscribe({
+    this.washSvc.getWash(this.washId!).subscribe({
       next: (washFromApi) => {
         this.wash = washFromApi;
         this.washForm.patchValue(washFromApi);

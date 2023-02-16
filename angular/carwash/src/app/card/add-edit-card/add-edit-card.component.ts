@@ -90,6 +90,7 @@ export class AddEditCardComponent implements OnInit{
     {
       if(this.pageMode == PageMode.Create)
       {
+        this.cardForm.value.actionDate = Date.now;
         this.cardSvc.createCard(this.cardForm.value).subscribe({
           next: () => {
             this.router.navigate(['/cards']);
@@ -136,7 +137,7 @@ export class AddEditCardComponent implements OnInit{
   private buildForm() {
     this.cardForm = this.fb.group({
       id: [0],
-     // actionDate: [''],
+      actionDate: null,
       paymentMethod: ['', Validators.required],
       customerId: ['', Validators.required],
       carId: ['', Validators.required],
