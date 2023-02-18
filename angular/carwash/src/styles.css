@@ -25,3 +25,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .slick-prev:before, .slick-next:before {
     color: red;
   }
+
+.customspan {
+    font-weight: bolder;
+    color: darkblue;
+}  
+
+.cus h1 {
+    padding-top: 100px;
+    font-size: xx-large;
+    
+}
+
+.cus p {
+    font-size: x-large;
+}
+
