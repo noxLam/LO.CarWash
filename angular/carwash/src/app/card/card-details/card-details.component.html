@@ -1,43 +1,47 @@
-<h1>-<span class="text-primary">{{ card?.customerFullName }}</span>-'s Card</h1>
-
-<hr>
-
-<div class="row">
-    <div class="col-md-2">Action Date :</div>
-    <div class="col-md-10">{{ card?.actionDate | date: 'longDate' }}</div>
+<div class="cusbak p-4 text-center">
+  <h1>-<span class="text-primary">{{ card?.customerFullName }}</span>-'s Card</h1>
+  
+  <hr>
+  
+  <div class="p-4 text-center fw-bold">
+    <div class="row">
+        <div class="col-md-6">Action Date :</div>
+        <div class="col-md-6">{{ card?.actionDate | date: 'longDate' }}</div>
+    </div>
+    
+     <div class="row mt-3">
+        <div class="col-md-6">Payment Method :</div>
+        <div class="col-md-6">{{paymentMethod[card.paymentMethod]}}</div>
+      </div>
+    
+      <div class="row mt-3">
+        <div class="col-md-6">Customer Name :</div>
+        <div class="col-md-6">{{card.customerFullName}}</div>
+      </div>
+    
+      <div class="row mt-3">
+        <div class="col-md-6">CarPlate Number :</div>
+        <div class="col-md-6">{{card.carPlateNumber}}</div>
+      </div>
+    
+      <div class="row mt-3">
+        <div class="col-md-6">wash Service :</div>
+        <div class="col-md-6">{{card.washWashService}}</div>
+      </div>
+    
+      <div class="row mt-3">
+        <div class="col-md-6">Employee Name :</div>
+        <div class="col-md-6">{{card.employeeFullName}}</div>
+      </div>
+    
+      <div class="row mt-3">
+        <div class="col-md-6">Total Price :</div>
+        <div class="col-md-6">{{card.totalPrice | currency: "JOD ":"symbol"}}</div>
+      </div>
+  </div>
+  
+    <div class="mt-4">
+      <button class="me-2" mat-raised-button color="basic" [routerLink]="['/cards']">Back</button>
+      <button mat-raised-button color="primary" [routerLink]="['/cards/edit/', cardId]">Edit</button>
+    </div>
 </div>
-
-<div class="row mt-3">
-    <div class="col-md-2">Payment Method :</div>
-    <div class="col-md-10">{{paymentMethod[card.paymentMethod]}}</div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-md-2">Customer Name :</div>
-    <div class="col-md-10">{{card.customerFullName}}</div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-md-2">CarPlate Number :</div>
-    <div class="col-md-10">{{card.carPlateNumber}}</div>
-  </div>
-  
-  <div class="row mt-3">
-    <div class="col-md-2">wash Service :</div>
-    <div class="col-md-10">{{card.washWashService}}</div>
-  </div>
-  
-  <div class="row mt-3">
-    <div class="col-md-2">Employee Name :</div>
-    <div class="col-md-10">{{card.employeeFullName}}</div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-md-2">Total Price :</div>
-    <div class="col-md-10">{{card.totalPrice | currency: "JOD ":"symbol"}}</div>
-  </div>
-
-  <div class="mt-4">
-    <button class="me-2" mat-raised-button color="basic" [routerLink]="['/cards']">Back</button>
-    <button mat-raised-button color="primary" [routerLink]="['/cards/edit/', cardId]">Edit</button>
-  </div>

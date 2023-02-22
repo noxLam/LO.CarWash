@@ -1,45 +1,47 @@
-<h1>Cards</h1>
-
-<button class="mb-3" mat-raised-button color="primary" [routerLink]="['/cards/create']">Create New Card</button>
-
-<hr>
-
-<div class="position-relative">
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Action Date</th>
-            <th>Payment Method</th>
-            <th>Car Plate Number</th>
-            <th>Wash Service</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let card of cards">
-            <td>{{ card.id }}</td>
-            <td>{{ card.actionDate | date:'medium' }}</td>
-            <td>{{ paymentMethod[card.paymentMethod] }}</td>
-            <td>{{ card.carPlateNumber }}</td>
-            <td>{{ card.washWashService }}</td>
-            <td class="pb-0 mb-0">
-                <a class="me-2 text-info" [routerLink]="['/cards/details', card.id]">
-                    <mat-icon fontIcon="info_outline"></mat-icon>
-                  </a>
-                <a class="me-2" [routerLink]="['/cards/edit', card.id]">
-                    <mat-icon fontIcon="edit"></mat-icon>
-                  </a>
-                  <a class="pointer text-danger" (click)="deleteCard(card.id)">
-                    <mat-icon fontIcon="delete"></mat-icon>
-                  </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-  <div class="spin-wrap" *ngIf="showSpinner">
-    <mat-spinner class="position-absolute top-50 start-50 translate-middle"></mat-spinner>
+<div class="cusbak p-4">
+  <h1>Cards</h1>
+  
+  <button class="mb-3" mat-raised-button color="primary" [routerLink]="['/cards/create']">Create New Card</button>
+  
+  <hr>
+  
+  <div class="position-relative">
+  
+  <table class="table">
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Action Date</th>
+              <th>Payment Method</th>
+              <th>Car Plate Number</th>
+              <th>Wash Service</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let card of cards">
+              <td>{{ card.id }}</td>
+              <td>{{ card.actionDate | date:'medium' }}</td>
+              <td>{{ paymentMethod[card.paymentMethod] }}</td>
+              <td>{{ card.carPlateNumber }}</td>
+              <td>{{ card.washWashService }}</td>
+              <td class="pb-0 mb-0">
+                  <a class="me-2 text-info" [routerLink]="['/cards/details', card.id]">
+                      <mat-icon fontIcon="info_outline"></mat-icon>
+                    </a>
+                  <a class="me-2" [routerLink]="['/cards/edit', card.id]">
+                      <mat-icon fontIcon="edit"></mat-icon>
+                    </a>
+                    <a class="pointer text-danger" (click)="deleteCard(card.id)">
+                      <mat-icon fontIcon="delete"></mat-icon>
+                    </a>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  
+    <div class="spin-wrap" *ngIf="showSpinner">
+      <mat-spinner class="position-absolute top-50 start-50 translate-middle"></mat-spinner>
+    </div>
+  
   </div>
-
 </div>

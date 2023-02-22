@@ -1,34 +1,36 @@
-<h1>Washes</h1>
-<hr>
-
-<button class="mb-4" mat-raised-button color="primary" [routerLink]="['/washes/create']">Add a new Wash</button>
-
-<div class="position-relative">
-<table class="table">
-    <thead>
-        <tr>
-            <th>Wash Services</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let wash of washes">
-            <td>{{ wash.washService }}</td>
-            <td>{{ wash.price }} JD</td>
-            <td class="pb-0 mb-0">
-                <a class="me-2 text-black" [routerLink]="['/washes/edit', wash.id]">
-                    <mat-icon>build</mat-icon>
-                </a>
-                <a class="pointer text-danger" (click)="deleteWash(wash.id)">
-                    <mat-icon>clear</mat-icon>
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="spin-wrap" *ngIf="showSpinner">
-    <mat-spinner class="start-50 top-50 translate-middle position-absolute"></mat-spinner>
-</div>
-
+<div class="cusbak p-4">
+    <h1>Washes</h1>
+    <hr>
+    
+    <button class="mb-4" mat-raised-button color="primary" [routerLink]="['/washes/create']">Add a new Wash</button>
+    
+    <div class="position-relative">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Wash Services</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let wash of washes">
+                <td>{{ wash.washService }}</td>
+                <td>{{ wash.price }} JD</td>
+                <td class="pb-0 mb-0">
+                    <a class="me-2 text-black" [routerLink]="['/washes/edit', wash.id]">
+                        <mat-icon>build</mat-icon>
+                    </a>
+                    <a class="pointer text-danger" (click)="deleteWash(wash.id)">
+                        <mat-icon>clear</mat-icon>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="spin-wrap" *ngIf="showSpinner">
+        <mat-spinner class="start-50 top-50 translate-middle position-absolute"></mat-spinner>
+    </div>
+    
+    </div>
 </div>

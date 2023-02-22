@@ -1,49 +1,53 @@
-<h1>
-    <span *ngIf="pageMode == pageModeEnum.Create">Add a Car</span>
-    <span *ngIf="pageMode == pageModeEnum.Edit">
-        <span>Edit Car </span>
-        <span class="text-warning">| {{ car?.plateNumber }} |</span>
-    </span>
-</h1>
-<hr>
-
-<form [formGroup]="carForm" (ngSubmit)="submitForm()">
-  <div class="row">
-        <div class="col-md-6">
-            <div class="">
-                <mat-form-field appearance="outline">
-                  <mat-label>Make</mat-label>
-                  <input matInput formControlName="make" required>
-                  <mat-error>Make is required</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="mt-3">
-                <mat-form-field appearance="outline">
-                  <mat-label>Model</mat-label>
-                  <input matInput formControlName="model" required>
-                  <mat-error>Model is required</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="mt-3">
-                <mat-form-field appearance="outline">
-                  <mat-label>Plate Number</mat-label>
-                  <input matInput formControlName="plateNumber" required>
-                  <mat-error>Plate Number is required</mat-error>
-                  <mat-error *ngIf="carPlateNumExists">{{carPlateNumExistsMessage}}</mat-error>
-                </mat-form-field>
-              </div>
-          </div>
-          <div class="col-md-6">
-            <app-image-uploader (onUploadFinished)="uploadFinished($event)" [config]="uploaderConfig"
-              [imagesNames]="images"></app-image-uploader>
-          </div>
+<div class="cusbak p-4">
+  <div class="ms-5">
+    <h1 class="ms-2">
+        <span *ngIf="pageMode == pageModeEnum.Create">Add a Car</span>
+        <span *ngIf="pageMode == pageModeEnum.Edit">
+            <span>Edit Car </span>
+            <span class="text-warning">| {{ car?.plateNumber }} |</span>
+        </span>
+    </h1>
   </div>
-    <div class="mt-4">
-        <button class="me-2" [routerLink]="['/cars']" mat-stroked-button color="basic">Cancel</button>
-        <button mat-flat-button color="primary" type="submit">
-            <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
-            <span *ngIf="pageMode == pageModeEnum.Edit">Save</span>
-          </button>
+  <hr>
+  
+  <form [formGroup]="carForm" (ngSubmit)="submitForm()">
+    <div class="row">
+          <div class="col-md-6">
+              <div class="ms-5">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Make</mat-label>
+                    <input matInput formControlName="make" required>
+                    <mat-error>Make is required</mat-error>
+                  </mat-form-field>
+              </div>
+              <div class="mt-3 ms-5">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Model</mat-label>
+                    <input matInput formControlName="model" required>
+                    <mat-error>Model is required</mat-error>
+                  </mat-form-field>
+              </div>
+              <div class="mt-3 ms-5">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Plate Number</mat-label>
+                    <input matInput formControlName="plateNumber" required>
+                    <mat-error>Plate Number is required</mat-error>
+                    <mat-error *ngIf="carPlateNumExists">{{carPlateNumExistsMessage}}</mat-error>
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <app-image-uploader (onUploadFinished)="uploadFinished($event)" [config]="uploaderConfig"
+                [imagesNames]="images"></app-image-uploader>
+            </div>
     </div>
-
-</form>
+      <div class="mt-4 ms-5">
+          <button class="me-2" [routerLink]="['/cars']" mat-stroked-button color="basic">Cancel</button>
+          <button mat-flat-button color="primary" type="submit">
+              <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
+              <span *ngIf="pageMode == pageModeEnum.Edit">Save</span>
+            </button>
+      </div>
+  
+  </form>
+</div>

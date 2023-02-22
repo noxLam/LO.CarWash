@@ -1,81 +1,83 @@
-<h1>
-    <span *ngIf="pageMode == pageModeEnum.Create">Add new Card</span>
-    <span *ngIf="pageMode == pageModeEnum.Edit">
-        <span>Edit Card </span>(
-        <span class="text-primary">  {{ card.actionDate | date: 'medium' }} </span>)
-    </span>
-</h1>
-
-<hr>
-
-<form [formGroup]="cardForm" (ngSubmit)="submitForm()">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="mt-3">
-      <mat-form-field appearance="fill">
-          <mat-label>Customer</mat-label>
-          <mat-select formControlName="customerId" required>
-            <mat-option *ngFor="let customer of customerLookup" [value]="customer.value">
-              {{customer.text}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="mt-3">
-      <mat-form-field appearance="fill">
-        <mat-label>Car</mat-label>
-        <mat-select formControlName="carId" required>
-          <mat-option *ngFor="let car of carLookup" [value]="car.value">
-            {{car.text}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="mt-4">
-      <h1>Total Price:
-        <span class="text-danger">{{ totalPrice | currency: "JOD ":"symbol" }}</span>
-      </h1>
-    </div>
-    </div>
-    <div class="col-md-6">
-      <div class="mt-3">
-        <mat-form-field appearance="fill">
-          <mat-label>Wash Type</mat-label>
-          <mat-select formControlName="washId" (selectionChange)="updatePrice()" required>
-            <mat-option *ngFor="let wash of washLookup" [value]="wash.value">
-              {{wash.text}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="mt-3">
-        <mat-form-field appearance="fill">
-          <mat-label>Employee</mat-label>
-          <mat-select formControlName="employeeId" required>
-            <mat-option *ngFor="let employee of employeeLookup" [value]="employee.value">
-              {{employee.text}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="mt-3">
-      <mat-form-field appearance="fill">
-          <mat-label>Payment Method</mat-label>
-          <mat-select formControlName="paymentMethod" required>
-            <mat-option *ngFor="let paymentMethod of paymentMethodEnum | enumToArray" [value]="paymentMethod.index">
-              {{paymentMethod.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-  </div>
+<div class="cusbak p-4 center-block text-center">
+  <h1>
+      <span *ngIf="pageMode == pageModeEnum.Create">Add new Card</span>
+      <span *ngIf="pageMode == pageModeEnum.Edit">
+          <span>Edit Card </span>(
+          <span class="text-primary">  {{ card.actionDate | date: 'medium' }} </span>)
+      </span>
+  </h1>
   
-<div class="mt-3">
-    <button class="me-2" [routerLink]="['/cards']" mat-stroked-button color="basic">Cancel</button>
-    <button mat-flat-button color="primary" type="submit">
-      <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
-      <span *ngIf="pageMode == pageModeEnum.Edit">Save</span>
-    </button>
-  </div>
-</form>
+  <hr>
+  
+  <form [formGroup]="cardForm" (ngSubmit)="submitForm()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mt-3">
+        <mat-form-field appearance="fill">
+            <mat-label>Customer</mat-label>
+            <mat-select formControlName="customerId" required>
+              <mat-option *ngFor="let customer of customerLookup" [value]="customer.value">
+                {{customer.text}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="mt-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Car</mat-label>
+          <mat-select formControlName="carId" required>
+            <mat-option *ngFor="let car of carLookup" [value]="car.value">
+              {{car.text}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="mt-4">
+        <h1>Total Price:
+          <span class="text-danger">{{ totalPrice | currency: "JOD ":"symbol" }}</span>
+        </h1>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mt-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Wash Type</mat-label>
+            <mat-select formControlName="washId" (selectionChange)="updatePrice()" required>
+              <mat-option *ngFor="let wash of washLookup" [value]="wash.value">
+                {{wash.text}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="mt-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Employee</mat-label>
+            <mat-select formControlName="employeeId" required>
+              <mat-option *ngFor="let employee of employeeLookup" [value]="employee.value">
+                {{employee.text}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="mt-3">
+        <mat-form-field appearance="fill">
+            <mat-label>Payment Method</mat-label>
+            <mat-select formControlName="paymentMethod" required>
+              <mat-option *ngFor="let paymentMethod of paymentMethodEnum | enumToArray" [value]="paymentMethod.index">
+                {{paymentMethod.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+  <div class="mt-3">
+      <button class="me-4" [routerLink]="['/cards']" mat-stroked-button color="basic">Cancel</button>
+      <button mat-flat-button color="primary" type="submit">
+        <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
+        <span *ngIf="pageMode == pageModeEnum.Edit">Save</span>
+      </button>
+    </div>
+  </form>
+</div>

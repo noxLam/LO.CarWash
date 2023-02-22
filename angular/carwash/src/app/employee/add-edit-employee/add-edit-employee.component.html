@@ -1,48 +1,50 @@
-<h1>
-    <span *ngIf="pageMode == pageModeEnum.Create">Add an Employee</span>
-    <span *ngIf="pageMode == pageModeEnum.Edit">
-        <span>Edit Employee </span>
-        <span class="text-primary">{{ employee?.firstName }}</span>
-    </span>
-</h1>
-
-<hr>
-
-<form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mt-4">
-                <mat-form-field appearance="outline">
-                  <mat-label>First Name</mat-label>
-                  <input matInput formControlName="firstName" required>
-                  <mat-error *ngIf="employeeForm.controls['firstName'].hasError('required')">First Name Is required</mat-error>
-                  <mat-error *ngIf="employeeForm.controls['firstName'].hasError('minlength')
-                  ||
-                   employeeForm.controls['firstName'].hasError('maxlength')">First name must be between 3 and 10 characters long.
-                </mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="mt-4">
-                <mat-form-field appearance="outline">
-                  <mat-label>Last Name</mat-label>
-                  <input matInput formControlName="lastName" required>
-                  <mat-error *ngIf="employeeForm.controls['lastName'].hasError('required')">Last Name Is required</mat-error>
-                  <mat-error *ngIf="employeeForm.controls['lastName'].hasError('minlength')
+<div class="cusbak p-4 text-center">
+    <h1>
+        <span *ngIf="pageMode == pageModeEnum.Create">Add an Employee</span>
+        <span *ngIf="pageMode == pageModeEnum.Edit">
+            <span>Edit Employee </span>
+            <span class="text-primary">{{ employee?.firstName }}</span>
+        </span>
+    </h1>
+    
+    <hr>
+    
+    <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+        <div class="row">
+            <div class="col-md-6 center-block">
+                <div class="mt-4">
+                    <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
+                      <input matInput formControlName="firstName" required>
+                      <mat-error *ngIf="employeeForm.controls['firstName'].hasError('required')">First Name Is required</mat-error>
+                      <mat-error *ngIf="employeeForm.controls['firstName'].hasError('minlength')
                       ||
-                      employeeForm.controls['lastName'].hasError('maxlength')">
-                    Last name must be between 3 and 10 characters long.
-                  </mat-error>
-                </mat-form-field>
+                       employeeForm.controls['firstName'].hasError('maxlength')">First name must be between 3 and 10 characters long.
+                    </mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <div class="mt-4">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Last Name</mat-label>
+                      <input matInput formControlName="lastName" required>
+                      <mat-error *ngIf="employeeForm.controls['lastName'].hasError('required')">Last Name Is required</mat-error>
+                      <mat-error *ngIf="employeeForm.controls['lastName'].hasError('minlength')
+                          ||
+                          employeeForm.controls['lastName'].hasError('maxlength')">
+                        Last name must be between 3 and 10 characters long.
+                      </mat-error>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="mt-4">
-        <button class="me-2" [routerLink]="['/employees']" mat-stroked-button>Cancel</button>
-        <button mat-raised-button color="warn" type="submit">
-            <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
-            <span *ngIf="pageMode == pageModeEnum.Edit">Edit</span>
-        </button>
-    </div>
-</form>
+    
+        <div class="mt-4">
+            <button class="me-2" [routerLink]="['/employees']" mat-stroked-button>Cancel</button>
+            <button mat-raised-button color="warn" type="submit">
+                <span *ngIf="pageMode == pageModeEnum.Create">Create</span>
+                <span *ngIf="pageMode == pageModeEnum.Edit">Edit</span>
+            </button>
+        </div>
+    </form>
+</div>

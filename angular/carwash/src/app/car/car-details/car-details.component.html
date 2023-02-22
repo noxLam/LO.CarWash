@@ -1,26 +1,30 @@
-<h1>|<span class="text-primary">{{ car?.plateNumber }}</span>| Details</h1>
-<hr>
-
-<div class="row mt-3">
-    <div class="col-md-3">Make</div>
-    <div class="col-md-9">{{ car?.make }}</div>
-</div>
-<div class="row mt-3">
-    <div class="col-md-3">Model</div>
-    <div class="col-md-9">{{ car?.model }}</div>
-</div>
-<div class="row mt-3">
-    <div class="col-md-3">plateNumber</div>
-    <div class="col-md-9">{{ car?.plateNumber }}</div>
-</div>
-
-<div class="row mt-3">
-    <app-image-uploader [config]="uploaderConfig" [imagesNames]="images"></app-image-uploader>
-  </div>
-
-<hr class="mt-5">
-
-<div class="mt-5">
-    <button class="me-2" mat-raised-button color="primary" [routerLink]="['/cars/edit/', carId]">Edit</button>
-    <button mat-raised-button color="warn" [routerLink]="['/cars']">Cancel</button>
+<div class="cusbak p-4">
+    <h1>|<span class="text-primary">{{ car?.plateNumber }}</span>| Details</h1>
+    <hr>
+    
+    <div class="p-4 text-center fw-bold">
+        <div class="row mt-3">
+            <div class="col-md-6">Make :</div>
+            <div class="col-md-6">{{ car?.make }}</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">Model :</div>
+            <div class="col-md-6">{{ car?.model }}</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">plateNumber :</div>
+            <div class="col-md-6">{{ car?.plateNumber }}</div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <app-image-uploader [config]="uploaderConfig" [imagesNames]="images"></app-image-uploader>
+      </div>
+    
+    <hr class="mt-5">
+    
+    <div class="mt-5">
+        <button class="me-2" mat-raised-button color="primary" [routerLink]="['/cars/edit/', carId]">Edit</button>
+        <button mat-raised-button color="warn" [routerLink]="['/cars']">Cancel</button>
+    </div>
 </div>

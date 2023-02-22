@@ -1,40 +1,43 @@
-<h1>Customers</h1>
-<hr>
-
-<button class="mb-4" mat-raised-button color="primary" [routerLink]="['/customers/create']">Add a new customer</button>
-
-<div class="position-relative">
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>full Name</th>
-            <th>phone Number</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let customer of customers">
-            <td>{{ customer.id }}</td>
-            <td>{{ customer.fullName }}</td>
-            <td>{{ customer.phoneNumber }}</td>
-            <td class="pb-0 mb-0">
-                <a class="me-2 text-black" [routerLink]="['/customers/edit', customer.id]">
-                    <mat-icon>build</mat-icon>
-                </a>
-                <a class="me-2" [routerLink]="['/customers/details', customer.id]">
-                    <mat-icon>help</mat-icon>
-                </a>
-                <a class="pointer text-danger" (click)="deleteCustomer(customer.id, customer.fullName)">
-                    <mat-icon>clear</mat-icon>
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="spin-wrap" *ngIf="showSpinner">
-    <mat-spinner class="start-50 top-50 translate-middle position-absolute"></mat-spinner>
-</div>
-
-
+<div class="cusbak p-4">
+    
+    <h1>Customers</h1>
+    <hr>
+    
+    <button class="mb-4" mat-raised-button color="primary" [routerLink]="['/customers/create']">Add a new customer</button>
+    
+    <div class="position-relative">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>full Name</th>
+                <th>phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers">
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.fullName }}</td>
+                <td>{{ customer.phoneNumber }}</td>
+                <td class="pb-0 mb-0">
+                    <a class="me-2 text-black" [routerLink]="['/customers/edit', customer.id]">
+                        <mat-icon>build</mat-icon>
+                    </a>
+                    <a class="me-2" [routerLink]="['/customers/details', customer.id]">
+                        <mat-icon>help</mat-icon>
+                    </a>
+                    <a class="pointer text-danger" (click)="deleteCustomer(customer.id, customer.fullName)">
+                        <mat-icon>clear</mat-icon>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="spin-wrap" *ngIf="showSpinner">
+        <mat-spinner class="start-50 top-50 translate-middle position-absolute"></mat-spinner>
+    </div>
+    
+    
+    </div>
 </div>

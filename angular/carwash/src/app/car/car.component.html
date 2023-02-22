@@ -1,37 +1,39 @@
-<h1>Cars</h1>
-<hr>
-
-<button class="mb-3" mat-raised-button color="primary" [routerLink]="['/cars/create']">Add New Car</button>
-
-<div class="position-relative">
-<table class="table">
-    <thead>
-        <tr>
-            <th>Model</th>
-            <th>PlateNumber</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let car of cars">
-            <td>{{ car.model }}</td>
-            <td>{{ car.plateNumber }}</td>
-            <td class="pb-0 mb-0">
-                <a class="me-2 text-black" [routerLink]="['/cars/edit', car.id]">
-                    <mat-icon>build</mat-icon>
-                </a>
-                <a class="me-2" [routerLink]="['/cars/details', car.id]">
-                    <mat-icon>help</mat-icon>
-                </a>
-                <a class="pointer text-danger" (click)="deleteCar(car.id, car.plateNumber)">
-                    <mat-icon>clear</mat-icon>
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="spin-wrap" *ngIf="showSpinner">
-    <mat-spinner class="start-50 top-50 translate-middle position-absolute"></mat-spinner>
-</div>
-
+<div class="cusbak p-4">
+    <h1>Cars</h1>
+    <hr>
+    
+    <button class="mb-3" mat-raised-button color="primary" [routerLink]="['/cars/create']">Add New Car</button>
+    
+    <div class="position-relative">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>PlateNumber</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let car of cars">
+                <td>{{ car.model }}</td>
+                <td>{{ car.plateNumber }}</td>
+                <td class="pb-0 mb-0">
+                    <a class="me-2 text-black" [routerLink]="['/cars/edit', car.id]">
+                        <mat-icon>build</mat-icon>
+                    </a>
+                    <a class="me-2" [routerLink]="['/cars/details', car.id]">
+                        <mat-icon>help</mat-icon>
+                    </a>
+                    <a class="pointer text-danger" (click)="deleteCar(car.id, car.plateNumber)">
+                        <mat-icon>clear</mat-icon>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="spin-wrap" *ngIf="showSpinner">
+        <mat-spinner class="start-50 top-50 translate-middle position-absolute"></mat-spinner>
+    </div>
+    
+    </div>
 </div>
