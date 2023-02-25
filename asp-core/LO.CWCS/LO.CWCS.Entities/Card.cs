@@ -12,7 +12,7 @@ namespace LO.CWCS.Entities
     public class Card
     {
         public int Id { get; set; }
-        public DateTime? ActionDate { get; set; }
+        public DateTime ActionDate { get; set; }
         public double TotalPrice { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
 

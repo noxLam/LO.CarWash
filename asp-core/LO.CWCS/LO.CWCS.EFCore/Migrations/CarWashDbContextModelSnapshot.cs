@@ -36,7 +36,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasIndex("CustomersId");
 
-                    b.ToTable("CarCustomer");
+                    b.ToTable("CarCustomer", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Card", b =>
@@ -47,7 +47,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("ActionDate")
+                    b.Property<DateTime>("ActionDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CarId")
@@ -78,7 +78,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasIndex("WashId");
 
-                    b.ToTable("Cards");
+                    b.ToTable("Cards", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Cars.Car", b =>
@@ -106,7 +106,7 @@ namespace LO.CWCS.EFCore.Migrations
                     b.HasIndex("PlateNumber")
                         .IsUnique();
 
-                    b.ToTable("Cars");
+                    b.ToTable("Cars", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Customers.Customer", b =>
@@ -131,7 +131,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Employee", b =>
@@ -152,7 +152,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.UploaderImage", b =>
@@ -194,7 +194,7 @@ namespace LO.CWCS.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Washes");
+                    b.ToTable("Washes", (string)null);
                 });
 
             modelBuilder.Entity("LO.CWCS.Entities.Cars.CarImage", b =>
